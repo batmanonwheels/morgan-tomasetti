@@ -1,0 +1,18 @@
+.horizontalrule {
+	border: none;
+	border-bottom: 1px solid var(--rule-primary);
+	opacity: 50%;
+	margin: 0 auto;
+	width: 75%;
+	/* padding-top: 1%;
+	padding-bottom: 1%; */
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+}
+
+@media (max-width: 600px) {
+	.horizontalrule {
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+	}
+}
