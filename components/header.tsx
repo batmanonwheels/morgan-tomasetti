@@ -1,54 +1,39 @@
-"use client";
-
 import Link from "next/link";
 
 export const Header = () => {
   const directory: string[][] = [
-    ["BIO", "/bio", "#fec5bb"],
-    ["COMMERCIAL", "/commercial", "#fcd5ce"],
-    ["THEATRE", "/theatre", "#fae1dd"],
-    ["TV/FILM", "/screen", "#f8edeb"],
-    ["MUSIC", "/music", "#e8e8e4"],
-    ["DIGIS", "/digis", "#d8e2dc"],
-    ["HEADSHOTS", "/headshots", "#ece4db"],
-    ["GALLERY", "/gallery", "#ffe5d9"],
-    ["CONTACT/RESUME", "/contact", "#ffd7ba"],
+    ["BIO", "/bio", "hover:before:bg-stone-600"],
+    ["COMMERCIAL", "/commercial", "hover:before:bg-red-600"],
+    ["THEATRE", "/theatre", "hover:before:bg-amber-600"],
+    ["TV/FILM", "/screen", "hover:before:bg-yellow-600"],
+    ["MUSIC", "/music", "hover:before:bg-emerald-600"],
+    ["DIGIS", "/digis", "hover:before:bg-blue-600"],
+    ["HEADSHOTS", "/headshots", "hover:before:bg-indigo-600"],
+    ["GALLERY", "/gallery", "hover:before:bg-violet-600"],
+    ["CONTACT/RESUME", "/contact", "hover:before:bg-stone-600"],
   ];
-
-  const changeHeaderBg = (color: string) => {
-    const header = document.querySelector("#header");
-    if (header) {
-      header.classList.remove(header.classList[7]);
-      header.classList.add(`bg-[${color}]`);
-      console.log(header);
-    }
-  };
-
-  const removeHeaderBg = () => {
-    const header = document.querySelector("#header");
-    if (header) {
-      header.classList.remove(header.classList[7]);
-      console.log(header);
-    }
-  };
 
   return (
     <header
-      className="fixed bottom-0 flex gap-10 p-8 w-full border-t bg-blue-500"
+      className="fixed bottom-0 flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60 hover:border-t-0"
       id="header"
     >
-      <Link href="/">
-        <h1 className="items-center text-3xl">MORGAN TOMASETTI</h1>
-      </Link>
+      <div className="flex-1 hidden peer-hover:block"></div>
       <nav className="flex items-center gap-5">
-        {directory.map(([title, link, color], i) => {
+        <Link href="/" className="flex ">
+          <h1 className="text-3xl">MORGAN TOMASETTI</h1>
+        </Link>
+        {directory.map(([title, link, bg], i) => {
           return (
             <Link
-              className={``}
+              className={`
+
+
+              before:absolute before:inset-0 before:pointer-events-none before:-z-10
+
+              ${bg} hover:before:pointer-events-auto `}
               href={link}
               key={title + i}
-              onMouseOver={() => changeHeaderBg(color)}
-              onMouseLeave={() => removeHeaderBg()}
             >
               {title}
             </Link>
