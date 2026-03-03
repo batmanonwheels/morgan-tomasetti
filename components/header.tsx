@@ -1,39 +1,54 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 export const Header = () => {
   const directory: string[][] = [
-    ["BIO", "/bio", "hover:before:bg-stone-600"],
-    ["COMMERCIAL", "/commercial", "hover:before:bg-red-600"],
-    ["THEATRE", "/theatre", "hover:before:bg-amber-600"],
-    ["TV/FILM", "/screen", "hover:before:bg-yellow-600"],
-    ["MUSIC", "/music", "hover:before:bg-emerald-600"],
-    ["DIGIS", "/digis", "hover:before:bg-blue-600"],
-    ["HEADSHOTS", "/headshots", "hover:before:bg-indigo-600"],
-    ["GALLERY", "/gallery", "hover:before:bg-violet-600"],
-    ["CONTACT/RESUME", "/contact", "hover:before:bg-stone-600"],
+    ["BIO", "/bio", "bg-stone-200"],
+    ["COMMERCIAL", "/commercial", "bg-red-200"],
+    ["THEATRE", "/theatre", "bg-amber-200"],
+    ["TV/FILM", "/screen", "bg-yellow-200"],
+    ["MUSIC", "/music", "bg-emerald-200"],
+    ["DIGIS", "/digis", "bg-blue-200"],
+    ["HEADSHOTS", "/headshots", "bg-indigo-200"],
+    ["GALLERY", "/gallery", "bg-violet-200"],
+    ["CONTACT/RESUME", "/contact", "bg-stone-200"],
   ];
+
+  const [currentColor, setCurrentColor] = useState<string>("bg-white");
+
+  const lockBackgroundColor = (linkColor: string) => {
+    const header = document.querySelector("#header");
+
+    if (header && currentColor) {
+      header.classList.remove(currentColor);
+    }
+
+    if (header) {
+      header.classList.add(linkColor);
+      setCurrentColor(linkColor);
+    }
+  };
 
   return (
     <header
-      className="fixed bottom-0 flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60 hover:border-t-0"
+      className="fixed bottom-0 flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60 bg-white"
       id="header"
+      onMouseLeave={() => lockBackgroundColor("bg-white")}
     >
-      <div className="flex-1 hidden peer-hover:block"></div>
+      <div className="hidden peer-hover:block peer-hover:flex-1 "></div>
       <nav className="flex items-center gap-5">
-        <Link href="/" className="flex ">
+        <Link href="/" className="">
           <h1 className="text-3xl">MORGAN TOMASETTI</h1>
         </Link>
         {directory.map(([title, link, bg], i) => {
           return (
             <Link
-              className={`
-
-
-              before:absolute before:inset-0 before:pointer-events-none before:-z-10
-
-              ${bg} hover:before:pointer-events-auto `}
+              className={``}
               href={link}
               key={title + i}
+              onMouseOver={() => lockBackgroundColor(bg)}
             >
               {title}
             </Link>
