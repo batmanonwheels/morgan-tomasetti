@@ -38,9 +38,9 @@ export const Header = () => {
       onMouseLeave={() => lockBackgroundColor("bg-white")}
     >
       <div className="hidden peer-hover:block peer-hover:flex-1 "></div>
-      <nav className="flex items-center gap-5">
+      <nav className="flex items-center gap-5 font-[--font-zenitha-classic] font-features-['ornm']">
         <Link href="/" className="">
-          <h1 className="text-3xl">MORGAN TOMASETTI</h1>
+          <h1 className="text-4xl ">MORGAN TOMASETTI</h1>
         </Link>
         {directory.map(([title, link, bg], i) => {
           return (

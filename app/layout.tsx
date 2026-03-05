@@ -1,7 +1,14 @@
 import { Header } from "@/components/header";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const zenithaClassic = localFont({
+  src: "./../fonts/ZenithaClassic.otf",
+  variable: "--font-zenitha-classic",
+  preload: true,
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +23,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Morgan Tomasetti",
   description: "Actress",
+  openGraph: {
+    title: "Morgan Tomasetti",
+    description: "Actress",
+    images: "",
+  },
+  metadataBase: new URL("https://morgantomasetti.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${zenithaClassic.variable}${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
         {children}
