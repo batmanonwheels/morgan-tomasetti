@@ -33,19 +33,19 @@ export const Header = () => {
 
   return (
     <header
-      className="fixed bottom-0 flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60 bg-white"
+      className="fixed bottom-0 flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60"
       id="header"
       onMouseLeave={() => lockBackgroundColor("bg-white")}
     >
       <div className="hidden peer-hover:block peer-hover:flex-1 "></div>
-      <nav className="flex items-center gap-5 font-[--font-zenitha-classic] font-features-['ornm']">
-        <Link href="/" className="">
-          <h1 className="text-4xl ">MORGAN TOMASETTI</h1>
+      <nav className="flex items-center gap-5">
+        <Link href="/" className="font-[--font-zenitha-classic]">
+          <h1 className="text-4xl  ">MORGAN TOMASETTI</h1>
         </Link>
         {directory.map(([title, link, bg], i) => {
           return (
             <Link
-              className={``}
+              className={`hover:underline`}
               href={link}
               key={title + i}
               onMouseOver={() => lockBackgroundColor(bg)}

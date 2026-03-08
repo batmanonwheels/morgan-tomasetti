@@ -5,9 +5,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const zenithaClassic = localFont({
-  src: "./../fonts/ZenithaClassic.otf",
+  src: "./../fonts/ZenithaClassic.woff2",
   variable: "--font-zenitha-classic",
-  preload: true,
 });
 
 const geistSans = Geist({
