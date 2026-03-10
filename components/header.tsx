@@ -2,23 +2,34 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { ContentPreview } from "./content-preview";
 
 export const Header = () => {
+  const [currentColor, setCurrentColor] = useState<string>("bg-white");
+  const [currentHover, setCurrentHover] = useState<string | undefined>("");
+
+  //Hide header on studio path
+  const pathname = usePathname();
+  if (pathname.includes("/studio")) {
+    return <header></header>;
+  }
+
+  //Array of all nav links and their respective colors
   const directory: string[][] = [
     ["BIO", "/bio", "bg-stone-200"],
-    ["COMMERCIAL", "/commercial", "bg-red-200"],
-    ["THEATRE", "/theatre", "bg-amber-200"],
-    ["TV/FILM", "/screen", "bg-yellow-200"],
-    ["MUSIC", "/music", "bg-emerald-200"],
-    ["DIGIS", "/digis", "bg-blue-200"],
-    ["HEADSHOTS", "/headshots", "bg-indigo-200"],
-    ["GALLERY", "/gallery", "bg-violet-200"],
+    ["COMMERCIAL", "/commercial", "bg-vintage-copper"],
+    ["THEATRE", "/theatre", "bg-dwarven-bronze"],
+    ["TV/FILM", "/screen", "bg-oak-palace"],
+    ["MUSIC", "/music", "bg-track-and-field"],
+    ["DIGIS", "/digis", "bg-fuzzy-wuzzy"],
+    ["HEADSHOTS", "/headshots", "bg-annatto"],
+    ["GALLERY", "/gallery", "bg-jinza-sunflower"],
     ["CONTACT/RESUME", "/contact", "bg-stone-200"],
   ];
 
-  const [currentColor, setCurrentColor] = useState<string>("bg-white");
-
-  const lockBackgroundColor = (linkColor: string) => {
+  //Change the background of the header depending on the current nav link being hovered
+  const lockBackgroundColor = (name: string, linkColor: string) => {
     const header = document.querySelector("#header");
 
     if (header && currentColor) {
@@ -28,18 +39,23 @@ export const Header = () => {
     if (header) {
       header.classList.add(linkColor);
       setCurrentColor(linkColor);
+      setCurrentHover(name);
     }
   };
 
   return (
     <header
-      className="fixed bottom-0 flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60"
+      className="fixed bottom-0 bg-white flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60"
       id="header"
-      onMouseLeave={() => lockBackgroundColor("bg-white")}
+      onMouseLeave={() => lockBackgroundColor("", "bg-white")}
     >
-      <div className="hidden peer-hover:block peer-hover:flex-1 "></div>
+      <ContentPreview link={currentHover} />
       <nav className="flex items-center gap-5">
-        <Link href="/" className="font-[--font-zenitha-classic]">
+        <Link
+          href="/"
+          className="font-[--font-zenitha-classic]"
+          onMouseOver={() => lockBackgroundColor("", "bg-white")}
+        >
           <h1 className="text-4xl  ">MORGAN TOMASETTI</h1>
         </Link>
         {directory.map(([title, link, bg], i) => {
@@ -48,7 +64,7 @@ export const Header = () => {
               className={`hover:underline`}
               href={link}
               key={title + i}
-              onMouseOver={() => lockBackgroundColor(bg)}
+              onMouseOver={() => lockBackgroundColor(title.toLowerCase(), bg)}
             >
               {title}
             </Link>

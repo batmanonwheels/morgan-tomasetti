@@ -1,5 +1,8 @@
-import { type SchemaTypeDefinition } from 'sanity'
+import { type SchemaTypeDefinition } from "sanity";
+import { photoType } from "@/app/(cms)/studio/schemaTypes/photoType";
+import { projectType } from "@/app/(cms)/studio/schemaTypes/projectType";
+import { fieldType } from "@/app/(cms)/studio/schemaTypes/fieldType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [],
-}
+  types: [fieldType, projectType, photoType],
+};

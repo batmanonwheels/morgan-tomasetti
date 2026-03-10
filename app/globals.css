@@ -8,8 +8,19 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@theme {
+  --color-vintage-copper: #9f5f45;
+  --color-dwarven-bronze: #bc5f2b;
+  --color-oak-palace: #b77042;
+  --color-track-and-field: #dd6856;
+  --color-fuzzy-wuzzy: #d06466;
+  --color-annatto: #8f573f;
+  --color-jinza-sunflower: #ef8279;
 }
 
 @media (prefers-color-scheme: dark) {
