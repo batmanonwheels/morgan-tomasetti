@@ -6,14 +6,8 @@ import { usePathname } from "next/navigation";
 import { ContentPreview } from "./content-preview";
 
 export const Header = () => {
-  const [currentColor, setCurrentColor] = useState<string>("bg-white");
-  const [currentHover, setCurrentHover] = useState<string | undefined>("");
-
-  //Hide header on studio path
   const pathname = usePathname();
-  if (pathname.includes("/studio")) {
-    return <header></header>;
-  }
+  const hideIfStudio = pathname.includes("/studio") ? "hidden" : "";
 
   //Array of all nav links and their respective colors
   const directory: string[][] = [
@@ -28,43 +22,39 @@ export const Header = () => {
     ["CONTACT/RESUME", "/contact", "bg-stone-200"],
   ];
 
-  //Change the background of the header depending on the current nav link being hovered
-  const lockBackgroundColor = (name: string, linkColor: string) => {
-    const header = document.querySelector("#header");
-
-    if (header && currentColor) {
-      header.classList.remove(currentColor);
+  const pathnameToColor = (path: string): string => {
+    for (const [, link, color] of directory) {
+      if (link === path) {
+        return color;
+      }
     }
-
-    if (header) {
-      header.classList.add(linkColor);
-      setCurrentColor(linkColor);
-      setCurrentHover(name);
-    }
+    return "bg-white";
   };
+
+  const [bgColor, setBgColor] = useState<string>(pathnameToColor(pathname));
 
   return (
     <header
-      className="fixed bottom-0 bg-white flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60"
+      className={`${hideIfStudio} fixed bottom-0 ${bgColor} flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60`}
       id="header"
-      onMouseLeave={() => lockBackgroundColor("", "bg-white")}
+      onMouseLeave={() => setBgColor(pathnameToColor(pathname))}
     >
-      <ContentPreview link={currentHover} />
+      <ContentPreview link={pathname} />
       <nav className="flex items-center gap-5">
         <Link
           href="/"
-          className="font-[--font-zenitha-classic]"
-          onMouseOver={() => lockBackgroundColor("", "bg-white")}
+          className={`font-[--font-zenitha-classic]`}
+          onMouseOver={() => setBgColor("bg-white")}
         >
-          <h1 className="text-4xl  ">MORGAN TOMASETTI</h1>
+          <h1 className="text-4xl">MORGAN TOMASETTI</h1>
         </Link>
         {directory.map(([title, link, bg], i) => {
           return (
             <Link
-              className={`hover:underline`}
+              className={`${pathname === link ? "underline" : "hover:underline"} underline-offset-8 decoration-wavy decoration-from-font`}
               href={link}
               key={title + i}
-              onMouseOver={() => lockBackgroundColor(title.toLowerCase(), bg)}
+              onMouseOver={() => setBgColor(bg)}
             >
               {title}
             </Link>
