@@ -6,7 +6,12 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      new URL("https://res.cloudinary.com/dmmn0gqaf/image/upload/**"),
+      // new URL("https://sanity.io/images/0a7f8a0o/production/**"),
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: "/images/0a7f8a0o/production/**",
+      },
     ],
   },
 };

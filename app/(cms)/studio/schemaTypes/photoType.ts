@@ -23,12 +23,19 @@ export const photoType = defineType({
     }),
     defineField({
       name: "portrait",
-      title: "Portrait",
+      title: "Image",
       type: "image",
       validation: (rule) => rule.required(),
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: "isVisible",
+      title: "Would you like this image to be visible?",
+      type: "boolean",
+      validation: (rule) => rule.required(),
+      initialValue: true,
     }),
   ],
 });

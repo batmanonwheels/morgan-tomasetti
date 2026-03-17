@@ -32,10 +32,11 @@ export const Header = () => {
   };
 
   const [bgColor, setBgColor] = useState<string>(pathnameToColor(pathname));
+  // const [showFullNav, setShowFullNav] = useState<boolean>(false);
 
   return (
     <header
-      className={`${hideIfStudio} fixed bottom-0 ${bgColor} flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in hover:h-60`}
+      className={`${hideIfStudio} fixed bottom-0 ${bgColor} flex flex-row items-end gap-10 p-8 w-full h-24 border-t transition-all duration-300 ease-in ${bgColor === "bg-stone-200" && "hover:h-60"}`}
       id="header"
       onMouseLeave={() => setBgColor(pathnameToColor(pathname))}
     >
@@ -51,7 +52,7 @@ export const Header = () => {
         {directory.map(([title, link, bg], i) => {
           return (
             <Link
-              className={`${pathname === link ? "underline" : "hover:underline"} underline-offset-8 decoration-wavy decoration-from-font`}
+              className={`${pathname.includes(link) ? "underline" : "hover:underline"} underline-offset-8 decoration-wavy decoration-from-font`}
               href={link}
               key={title + i}
               onMouseOver={() => setBgColor(bg)}

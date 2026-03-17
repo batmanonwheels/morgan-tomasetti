@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${zenithaClassic.variable}${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${zenithaClassic.variable}${geistSans.variable} ${geistMono.variable} antialiased min-h-[calc(100dvh)]`}
       >
         <Header />
         {children}
