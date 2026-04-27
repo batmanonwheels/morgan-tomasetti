@@ -1,37 +1,53 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
+}
+
+@utility no-scrollbar {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+	/* --font-gluten: var(--font-gluten-variable); */
 }
 
 @theme {
-  --color-vintage-copper: #9f5f45;
-  --color-dwarven-bronze: #bc5f2b;
-  --color-oak-palace: #b77042;
-  --color-track-and-field: #dd6856;
-  --color-fuzzy-wuzzy: #d06466;
-  --color-annatto: #8f573f;
-  --color-jinza-sunflower: #ef8279;
+	--color-vintage-copper: #9f5f45;
+	--color-dwarven-bronze: #bc5f2b;
+	--color-oak-palace: #b77042;
+	--color-track-and-field: #dd6856;
+	--color-fuzzy-wuzzy: #d06466;
+	--color-annatto: #8f573f;
+	--color-jinza-sunflower: #ef8279;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+::view-transition-new(*),
+::view-transition-old(*) {
+	overflow: hidden;
+	grid-row: 1 / -1;
+	height: 100%;
+	width: 100%;
+	object-fit: fill;
 }

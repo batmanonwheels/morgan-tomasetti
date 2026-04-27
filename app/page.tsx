@@ -1,20 +1,21 @@
-import Image from "next/image";
+import { getRandomCoverPhoto } from '@/lib/getRandom';
+import Image from 'next/image';
+import { ViewTransition } from 'react';
 
-export default function Home() {
-  return (
-    <div className="h-screen font-sans bg-zinc-50">
-      <main className="flex items-center justify-center max-h-[calc(100dvh-6rem)]">
-        <Image
-          alt={"Heashot of Morgan Tomasetti"}
-          src={
-            "https://cdn.sanity.io/images/0a7f8a0o/production/4fe819901fcecc07e25908684ceb2149a941a04d-1920x1536.webp?w=2000&fit=max&auto=format&dpr=2"
-          }
-          width={1920}
-          height={1080}
-          className="w-full h-screen object-cover"
-          // style={{ objectPosition: "25%" }}
-        />
-      </main>
-    </div>
-  );
+export default async function Home() {
+	const { width, height, cover } = await getRandomCoverPhoto();
+
+	return (
+		<main className='col-span-full row-span-7 p-4 max-md:row-span-7 max-md:p-2'>
+			<ViewTransition name={'cover-photo'}>
+				<Image
+					alt={'Heashot of Morgan Tomasetti'}
+					src={cover}
+					width={width}
+					height={height}
+					className='w-full h-full object-cover rounded-lg'
+				/>
+			</ViewTransition>
+		</main>
+	);
 }

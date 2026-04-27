@@ -1,7 +1,19 @@
-export default function Screen() {
-  return (
-    <div className="min-h-screen font-sans bg-zinc-50">
-      <main className="flex items-center justify-center "></main>
-    </div>
-  );
+import Image from 'next/image';
+import { ViewTransition } from 'react';
+import { getRandomFieldPhoto } from '@/lib/getRandom';
+
+export default async function Screen() {
+	const { width, height, cover } = await getRandomFieldPhoto('TV/Film');
+
+	return (
+		<ViewTransition name={'cover-photo'}>
+			<Image
+				alt={'Heashot of Morgan Tomasetti'}
+				src={cover}
+				width={width}
+				height={height}
+				className='h-full w-auto m-auto object-cover rounded-lg'
+			/>
+		</ViewTransition>
+	);
 }
