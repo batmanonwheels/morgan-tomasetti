@@ -18,5 +18,12 @@ export const projectType = defineType({
       to: [{ type: "field" }],
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: "slug",
+      title: "Slug (do this last!)",
+      type: "slug",
+      options: { source: "name" },
+      validation: (rule) => rule.required(),
+    }),
   ],
 });

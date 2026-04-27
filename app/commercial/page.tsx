@@ -1,7 +1,19 @@
-export default function Commercial() {
-  return (
-    <div className="min-h-screen font-sans bg-zinc-50 dark:bg-black">
-      <main className="flex items-center justify-center "></main>
-    </div>
-  );
+import Image from 'next/image';
+import { ViewTransition } from 'react';
+import { getRandomFieldVideoThumbnail } from '@/lib/getRandom';
+
+export default async function Commercial() {
+	const { cover } = await getRandomFieldVideoThumbnail('Commercial');
+
+	return (
+		<ViewTransition name={'cover-photo'}>
+			<Image
+				alt={'Morgan Tomasetti video thumbnail'}
+				src={cover!}
+				width={1920}
+				height={1080}
+				className='flex-1 m-auto object-cover rounded-lg'
+			/>
+		</ViewTransition>
+	);
 }

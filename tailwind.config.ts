@@ -1,16 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        zenitha: ["var(--font-zenitha-classic)"],
-      },
-    },
-  },
-  plugins: [],
+	content: [
+		'./pages/**/*.{js,ts,jsx,tsx}',
+		'./components/**/*.{js,ts,jsx,tsx}',
+		'./app/**/*.{js,ts,jsx,tsx}',
+	],
+	theme: {
+		extend: {
+			fontFamily: {
+				zenitha: ['var(--font-zenitha-classic)'],
+				gluten: ['var(--font-gluten)'],
+			},
+		},
+	},
+	plugins: [],
 };

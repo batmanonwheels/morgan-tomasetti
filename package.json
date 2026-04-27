@@ -8,12 +8,15 @@
     "start": "next start",
     "lint": "eslint"
   },
-  "dependencies": {
-    "@sanity/image-url": "1",
-    "@sanity/vision": "4",
+  "peerDependencies": {
     "next": "16.1.6",
-    "next-sanity": "^12.1.0",
-    "react": "19.2.3",
+    "react": "19.2.3"
+  },
+  "dependencies": {
+    "@masonry-grid/react": "^1.1.1",
+    "@sanity/image-url": "^2.0.3",
+    "@sanity/vision": "4",
+    "next-sanity": "^12.1.1",
     "react-dom": "19.2.3",
     "sanity": "4",
     "styled-components": "6"
