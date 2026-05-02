@@ -14,7 +14,7 @@ export default async function DigisLayout({
 
 	return (
 		// <main className='col-span-full row-span-7 grid grid-cols-10 grid-rows-8 gap-4 p-4'>
-		<main className='col-span-full row-span-7 flex gap-4 p-4'>
+		<main className='col-span-full row-span-7 flex gap-4 p-4 max-md:flex-col-reverse max-md:p-2 max-md:gap-2'>
 			{projects && (
 				<ProjectList projects={projects} baseUrl={'/digis/'} name={name} />
 			)}

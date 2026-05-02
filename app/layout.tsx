@@ -1,12 +1,14 @@
 import { Footer } from '@/components/footer';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Caprasimo } from 'next/font/google';
 import localFont from 'next/font/local';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const zenithaClassic = localFont({
-	src: './../fonts/ZenithaClassic.woff2',
+	src: './../fonts/ZenithaClassic.otf',
 	variable: '--font-zenitha-classic',
+	weight: '400',
 });
 
 const geistSans = Geist({
@@ -17,6 +19,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
 	variable: '--font-geist-mono',
 	subsets: ['latin'],
+});
+
+const caprasimo = Caprasimo({
+	subsets: ['latin'],
+	weight: '400',
+	variable: '--font-caprasimo',
 });
 
 export const metadata: Metadata = {
@@ -44,10 +52,11 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${zenithaClassic.variable} ${geistSans.variable} ${geistMono.variable} grid grid-cols-10 grid-rows-8 gap-4 antialiased box-border bg-zinc-100 h-dvh  max-md:max-w-dvw max-md:max-h-dvh max-md:overflow-hidden max-md:grid-rows-7 max-md:gap-0 *:col-span-full`}
+				className={`${zenithaClassic.variable} ${geistSans.variable} ${geistMono.variable} ${caprasimo.variable} grid grid-cols-10 grid-rows-8 gap-4 antialiased box-border bg-zinc-100 h-dvh  max-md:max-w-dvw max-md:max-h-dvh max-md:overflow-hidden max-md:grid-rows-7 max-md:gap-0 *:col-span-full`}
 			>
 				{children}
 				<Footer />
+				<Analytics />
 			</body>
 		</html>
 	);

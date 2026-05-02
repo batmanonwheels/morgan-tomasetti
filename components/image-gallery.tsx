@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import { ViewTransition } from 'react';
 import { BalancedMasonryGrid as MasonryGrid, Frame } from '@masonry-grid/react';
@@ -12,9 +13,9 @@ type ImageGalleryProps = {
 export default function ImageGallery({ photos }: ImageGalleryProps) {
 	return (
 		<MasonryGrid
-			className='h-full w-full col-span-full row-span-full object-cover rounded-lg'
-			gap={10}
-			frameWidth={250}
+			className='h-full w-full col-span-full row-span-full object-cover rounded-lg p'
+			gap={'.5rem'}
+			frameWidth={'10rem'}
 		>
 			{photos.map(
 				({ description, portrait, dimensions: { width, height } }, i) => {

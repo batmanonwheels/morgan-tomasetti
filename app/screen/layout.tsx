@@ -8,14 +8,16 @@ export default async function ScreenLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const { name, projects } = await client.fetch<Field>(
-		PROJECT_LIST_QUERY('TV/Film'),
-	);
+	const { projects } = await client.fetch<Field>(PROJECT_LIST_QUERY('TV/Film'));
 
 	return (
-		<main className='col-span-full row-span-7 flex gap-4 p-4'>
+		<main className='col-span-full row-span-7 flex gap-4 p-4 max-md:flex-col-reverse max-md:p-2 max-md:gap-2'>
 			{projects && (
-				<ProjectList projects={projects} baseUrl={'/screen/'} name={name} />
+				<ProjectList
+					projects={projects}
+					baseUrl={'/screen/'}
+					name={'Tv/Film'}
+				/>
 			)}
 			{children}
 		</main>

@@ -15,36 +15,35 @@ export default async function Bio() {
 	];
 
 	return (
-		<main className='col-span-full row-span-7 grid grid-cols-subgrid grid-rows-subgrid p-4'>
+		<main className='col-span-full row-span-7 grid grid-cols-subgrid grid-rows-subgrid p-4 max-md:flex max-md:flex-col max-md:overflow-y-scroll max-md:no-scrollbar. max-md:gap-4'>
 			<ViewTransition name={'cover-photo'}>
 				<Image
 					alt={'Heashot of Morgan Tomasetti'}
 					src={cover}
 					width={width}
 					height={height}
-					className='col-span-4 row-span-full w-full h-full object-cover rounded-lg object-top'
+					className='col-span-4 row-span-full w-full h-full object-cover rounded-lg object-top max-md:w-full max-md:h-[62.5vh]'
 				/>
 			</ViewTransition>
-			<ViewTransition name={'cover-text'}>
-				<section className='col-start-6 col-span-4 row-span-full my-auto flex flex-col gap-4'>
-					<div className='flex flex-col gap-2'>
-						<h1 className='text-6xl font-[--font-zenitha-classic]'>
-							ABOUT MORGAN
-						</h1>
-						<h3 className='text-xl font-bold font-mono'>
-							{subtitle.toUpperCase()}
-						</h3>
-					</div>
 
-					<div className='flex flex-col gap-2'>
-						{aboutText.map((paragraph, i) => (
-							<p className='' key={i}>
-								{paragraph}
-							</p>
-						))}
-					</div>
-				</section>
-			</ViewTransition>
+			<section className='col-start-6 col-span-4 row-span-full my-auto flex flex-col gap-4 max-md:px-4'>
+				<div className='flex flex-col gap-2'>
+					<h1 className='text-8xl font-zenitha max-md:text-6xl'>
+						About Morgan
+					</h1>
+					<h3 className='text-xl font-caprasimo max-md:text-sm'>
+						{subtitle.toUpperCase()}
+					</h3>
+				</div>
+
+				<div className='flex flex-col gap-2 max-md:text-sm'>
+					{aboutText.map((paragraph, i) => (
+						<p className='' key={i}>
+							{paragraph}
+						</p>
+					))}
+				</div>
+			</section>
 		</main>
 	);
 }

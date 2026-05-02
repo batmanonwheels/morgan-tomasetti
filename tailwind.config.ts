@@ -10,6 +10,7 @@ module.exports = {
 			fontFamily: {
 				zenitha: ['var(--font-zenitha-classic)'],
 				gluten: ['var(--font-gluten)'],
+				caprasimo: ['--font-camprasimo'],
 			},
 		},
 	},
