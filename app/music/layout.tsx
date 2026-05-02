@@ -2,6 +2,21 @@ import { Field } from '@/sanity.types';
 import { client } from '../../sanity/lib/client';
 import { ProjectList } from '@/components/project-list';
 import { PROJECT_LIST_QUERY } from '@/lib/queries';
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+	themeColor: '#f4aba5',
+};
+
+export const metadata: Metadata = {
+	title: 'Music | Morgan Tomasetti',
+	description: 'Actress',
+	openGraph: {
+		title: 'Music | Morgan Tomasetti',
+		description: 'Actress',
+		images: '',
+	},
+};
 
 export default async function MusicLayout({
 	children,

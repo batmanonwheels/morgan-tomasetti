@@ -1,6 +1,21 @@
 import { getRandomFieldPhoto } from '@/lib/getRandom';
 import Image from 'next/image';
 import { ViewTransition } from 'react';
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+	themeColor: '#ef8279',
+};
+
+export const metadata: Metadata = {
+	title: 'Contact | Morgan Tomasetti',
+	description: 'Actress',
+	openGraph: {
+		title: 'Contact | Morgan Tomasetti',
+		description: 'Actress',
+		images: '',
+	},
+};
 
 export default async function Contact() {
 	const { width, height, cover } = await getRandomFieldPhoto('Headshots');
