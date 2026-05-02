@@ -2,7 +2,11 @@ import { Field } from '@/sanity.types';
 import { client } from '../../sanity/lib/client';
 import { ProjectList } from '@/components/project-list';
 import { PROJECT_LIST_QUERY } from '@/lib/queries';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+	themeColor: '#f7c7c3',
+};
 
 export const metadata: Metadata = {
 	title: 'Theatre | Morgan Tomasetti',
