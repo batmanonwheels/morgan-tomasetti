@@ -31,13 +31,13 @@ export const ImageCard = ({
 	};
 
 	return (
-		<li className='my-auto h-full'>
+		<li className='h-auto w-auto rounded-lg max-md:max-h-full flex items-center'>
 			<Image
 				src={src}
 				alt={desc}
 				width={w}
 				height={h}
-				className={`h-full w-auto m-auto rounded-lg object-cover cursor-pointer max-md:h-full`}
+				className={`h-auto w-auto m-auto rounded-lg object-cover cursor-pointer max-md:h-full max-md:object-contain`}
 				onClick={() => handleSetActive()}
 			/>
 		</li>

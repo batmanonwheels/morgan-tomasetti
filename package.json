@@ -16,6 +16,7 @@
     "@masonry-grid/react": "^1.1.1",
     "@sanity/image-url": "^2.0.3",
     "@sanity/vision": "4",
+    "@vercel/analytics": "^2.0.1",
     "next-sanity": "^12.1.1",
     "react-dom": "19.2.3",
     "sanity": "4",

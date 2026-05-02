@@ -20,13 +20,13 @@ export const VideoCard = ({ src, desc, handleSetItem }: VideoCardProps) => {
 	};
 
 	return (
-		<li className='my-auto relative max-md:max-h-full '>
+		<li className='relative h-auto w-auto max-md:h-full max-md:flex max-md:items-center'>
 			<Image
 				src={generateThumbnail(src)!}
 				alt={desc}
 				width={1920}
 				height={1080}
-				className={`h-auto w-full py-auto rounded-lg object-cover cursor-pointer max-md:h-full max-md:w-auto max-md:py-0`}
+				className={`h-auto w-auto m-auto rounded-lg object-contain cursor-pointer max-md:h-full`}
 				onClick={() => handleSetActive()}
 			/>
 			<svg

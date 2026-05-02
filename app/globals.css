@@ -1,7 +1,8 @@
 @import 'tailwindcss';
 
 :root {
-	--background: #ffffff;
+	/* --background: #ffffff; */
+	--background: #fff3f1;
 	--foreground: #171717;
 }
 
@@ -19,7 +20,8 @@
 
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
-	/* --font-gluten: var(--font-gluten-variable); */
+	--font-caprasimo: var(--font-caprasimo);
+	--font-zenitha: var(--font-zenitha-classic);
 }
 
 @theme {
@@ -29,7 +31,16 @@
 	--color-track-and-field: #dd6856;
 	--color-fuzzy-wuzzy: #d06466;
 	--color-annatto: #8f573f;
-	--color-jinza-sunflower: #ef8279;
+	/* --color-jinza-sunflower: #ef8279; */
+
+	--color-jinza-safflower-1: #ef8279;
+	--color-jinza-safflower-2: #f08f87;
+	--color-jinza-safflower-3: #f29d96;
+	--color-jinza-safflower-4: #f4aba5;
+	--color-jinza-safflower-5: #f6b9b4;
+	--color-jinza-safflower-6: #f7c7c3;
+	--color-jinza-safflower-7: #f9d5d2;
+	--color-jinza-safflower-8: #fbe3e1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,6 +52,7 @@
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--background);
 }
 
 ::view-transition-new(*),
@@ -50,4 +62,9 @@ body {
 	height: 100%;
 	width: 100%;
 	object-fit: fill;
+}
+
+h1,
+h2 {
+	font-feature-settings: 'ss01';
 }

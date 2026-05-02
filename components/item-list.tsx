@@ -18,7 +18,8 @@ type ItemListProps = {
 
 export const ItemList = ({ photos, videos, handleSetItem }: ItemListProps) => {
 	return (
-		<ul className='col-span-1 row-span-full grid grid-rows-subgrid overflow-y-auto no-scrollbar max-md:col-span-full max-md:row-start-8 max-md:row-span-1 max-md:flex max-md:overflow-y-hidden max-md:overflow-x-scroll max-md:min-w-full max-md:px-4 max-md:h-1/10 max-md:snap-x max-md:snap-mandatory max-md:gap-1  max-md:justify-center'>
+		// <ul className='col-span-1 row-span-full grid grid-rows-subgrid no-scrollbar justify-center gap-3 max-md:flex max-md:max-h-14 max-md:justify-center'>
+		<ul className='col-span-1 row-span-full h-full no-scrollbar overflow-y-scroll rounded-lg gap-4 flex flex-col max-md:flex-row max-md:max-h-14 max-md:justify-center'>
 			{videos &&
 				videos.map(({ description, link }, i) => {
 					return (
