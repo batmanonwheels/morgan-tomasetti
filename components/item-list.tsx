@@ -1,8 +1,8 @@
-import { ImageCard } from '@/components/image-card';
-import { urlFor } from '@/lib/urlForImage';
-import { Photo, Video } from '@/sanity.types';
-import { SanityImageSource } from '@sanity/image-url';
-import { VideoCard } from './video-card';
+import { SanityImageSource } from "@sanity/image-url";
+import { ImageCard } from "@/components/image-card";
+import { urlFor } from "@/lib/urlForImage";
+import { Photo, Video } from "@/sanity.types";
+import { VideoCard } from "./video-card";
 
 type ItemListProps = {
 	photos: Photo[];
@@ -18,8 +18,7 @@ type ItemListProps = {
 
 export const ItemList = ({ photos, videos, handleSetItem }: ItemListProps) => {
 	return (
-		// <ul className='col-span-1 row-span-full grid grid-rows-subgrid no-scrollbar justify-center gap-3 max-md:flex max-md:max-h-14 max-md:justify-center'>
-		<ul className='col-span-1 row-span-full h-full no-scrollbar overflow-y-scroll rounded-lg gap-4 flex flex-col max-md:flex-row max-md:max-h-14 max-md:justify-center'>
+		<ul className="no-scrollbar flex max-h-14 flex-row justify-center gap-2 overflow-y-scroll rounded-lg md:max-h-full md:basis-1/8 md:flex-col md:items-start md:justify-start md:gap-4">
 			{videos &&
 				videos.map(({ description, link }, i) => {
 					return (
@@ -42,8 +41,8 @@ export const ItemList = ({ photos, videos, handleSetItem }: ItemListProps) => {
 						i,
 					) => {
 						const photoUrl = portrait
-							? urlFor(portrait, width, height)!.fit('max').quality(100).url()
-							: '';
+							? urlFor(portrait, width, height)!.fit("max").quality(100).url()
+							: "";
 
 						return (
 							<ImageCard

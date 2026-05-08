@@ -1,65 +1,65 @@
-import type { MetadataRoute } from 'next';
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
 		{
-			url: 'https://morgantomasetti.com',
+			url: "https://morgantomasetti.com",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/theatre',
+			url: "https://morgantomasetti.com/theatre",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/commercial',
+			url: "https://morgantomasetti.com/commercial",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/screen',
+			url: "https://morgantomasetti.com/screen",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/music',
+			url: "https://morgantomasetti.com/music",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/headshots',
+			url: "https://morgantomasetti.com/headshots",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/digis',
+			url: "https://morgantomasetti.com/digis",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/bio',
+			url: "https://morgantomasetti.com/bio",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/contact',
+			url: "https://morgantomasetti.com/contact",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 		{
-			url: 'https://morgantomasetti.com/gallery',
+			url: "https://morgantomasetti.com/gallery",
 			lastModified: new Date(),
-			changeFrequency: 'yearly',
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 	];

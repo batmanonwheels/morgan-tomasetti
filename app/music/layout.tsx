@@ -1,20 +1,18 @@
-import { Field } from '@/sanity.types';
-import { client } from '../../sanity/lib/client';
-import { ProjectList } from '@/components/project-list';
-import { PROJECT_LIST_QUERY } from '@/lib/queries';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport } from "next";
+import { MainContainer } from "@/components/main-container";
+import { ProjectList } from "@/components/project-list";
+import { PROJECT_LIST_QUERY } from "@/lib/queries";
+import { Field } from "@/sanity.types";
+import { client } from "../../sanity/lib/client";
 
 export const viewport: Viewport = {
-	themeColor: '#f4aba5',
+	themeColor: "#f4aba5",
 };
 
 export const metadata: Metadata = {
-	title: 'Music | Morgan Tomasetti',
-	description: 'Actress',
+	title: "MUSIC | Morgan Tomasetti",
 	openGraph: {
-		title: 'Music | Morgan Tomasetti',
-		description: 'Actress',
-		images: '',
+		title: "MUSIC | Morgan Tomasetti",
 	},
 };
 
@@ -24,15 +22,15 @@ export default async function MusicLayout({
 	children: React.ReactNode;
 }>) {
 	const { name, projects } = await client.fetch<Field>(
-		PROJECT_LIST_QUERY('Music'),
+		PROJECT_LIST_QUERY("Music"),
 	);
 
 	return (
-		<main className='col-span-full row-span-7 flex gap-4 p-4 max-md:flex-col-reverse max-md:p-2 max-md:gap-2'>
+		<MainContainer className="flex-col-reverse gap-2">
 			{projects && (
-				<ProjectList projects={projects} baseUrl={'/music/'} name={name} />
+				<ProjectList projects={projects} baseUrl={"/music/"} name={name} />
 			)}
 			{children}
-		</main>
+		</MainContainer>
 	);
 }

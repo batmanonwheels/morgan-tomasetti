@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 :root {
 	/* --background: #ffffff; */
@@ -33,6 +33,7 @@
 	--color-annatto: #8f573f;
 	/* --color-jinza-sunflower: #ef8279; */
 
+	--color-jinza-safflower-bg: var(--background);
 	--color-jinza-safflower-1: #ef8279;
 	--color-jinza-safflower-2: #f08f87;
 	--color-jinza-safflower-3: #f29d96;
@@ -45,8 +46,8 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
+		--background: #fff3f1;
+		--foreground: #171717;
 	}
 }
 
@@ -66,5 +67,5 @@ body {
 
 h1,
 h2 {
-	font-feature-settings: 'ss01';
+	font-feature-settings: "ss01";
 }

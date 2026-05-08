@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { SanityImageSource } from '@sanity/image-url';
+import { SanityImageSource } from "@sanity/image-url";
+import Image from "next/image";
 
 type ImageCardProps = {
 	portrait: SanityImageSource;
@@ -27,17 +27,17 @@ export const ImageCard = ({
 	handleSetItem,
 }: ImageCardProps) => {
 	const handleSetActive = () => {
-		handleSetItem('image', undefined, portrait, w, h);
+		handleSetItem("image", undefined, portrait, w, h);
 	};
 
 	return (
-		<li className='h-auto w-auto rounded-lg max-md:max-h-full flex items-center'>
+		<li className="flex h-auto w-auto items-center rounded-lg max-md:max-h-full">
 			<Image
 				src={src}
 				alt={desc}
 				width={w}
 				height={h}
-				className={`h-auto w-auto m-auto rounded-lg object-cover cursor-pointer max-md:h-full max-md:object-contain`}
+				className={`m-auto h-auto w-auto cursor-pointer rounded-lg object-cover max-md:h-full max-md:object-contain`}
 				onClick={() => handleSetActive()}
 			/>
 		</li>

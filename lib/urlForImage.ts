@@ -1,5 +1,5 @@
-import { client } from '@/sanity/lib/client';
-import { createImageUrlBuilder, SanityImageSource } from '@sanity/image-url';
+import { createImageUrlBuilder, SanityImageSource } from "@sanity/image-url";
+import { client } from "@/sanity/lib/client";
 
 const { projectId, dataset } = client.config();
 

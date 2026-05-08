@@ -1,12 +1,12 @@
-import { client } from '@/sanity/lib/client';
-import { urlFor } from './urlForImage';
-import { Photo, Video } from '@/sanity.types';
+import { client } from "@/sanity/lib/client";
+import { Photo, Video } from "@/sanity.types";
+import { generateThumbnail } from "./generateThumbnail";
 import {
 	COVER_PHOTOS_QUERY,
 	FIELD_PHOTOS_QUERY,
 	FIELD_VIDEOS_THUMBNAIL_QUERY,
-} from './queries';
-import { generateThumbnail } from './generateThumbnail';
+} from "./queries";
+import { urlFor } from "./urlForImage";
 
 export const getRandomCoverPhoto = async (): Promise<{
 	width: number;
@@ -23,7 +23,7 @@ export const getRandomCoverPhoto = async (): Promise<{
 	return {
 		width,
 		height,
-		cover: urlFor(portrait, width, height)!.fit('max').quality(100).url(),
+		cover: urlFor(portrait, width, height)!.fit("max").quality(100).url(),
 	};
 };
 
@@ -44,7 +44,7 @@ export const getRandomFieldPhoto = async (
 	return {
 		width,
 		height,
-		cover: urlFor(portrait, width, height)!.fit('max').quality(100).url(),
+		cover: urlFor(portrait, width, height)!.fit("max").quality(100).url(),
 	};
 };
 

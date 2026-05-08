@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import type { Project } from '@/sanity.types';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
+import type { Project } from "@/sanity.types";
 
 export const ProjectList = ({
 	projects,
@@ -19,18 +19,18 @@ export const ProjectList = ({
 
 	useEffect(() => {
 		activeRef.current?.scrollIntoView({
-			behavior: 'smooth',
-			block: 'nearest',
-			inline: 'center',
+			behavior: "smooth",
+			block: "nearest",
+			inline: "center",
 		});
-	}, [pathname]);
+	}, []);
 
 	return (
-		<aside className='flex flex-col gap-4 px-2 	max-md:w-full max-md:h-7 max-md:items-center align-middle'>
-			<Link href={baseUrl} className='max-md:hidden'>
-				<h2 className='text-2xl font-zenitha font-medium w-full '>{name}</h2>
+		<aside className="flex h-10 w-full flex-col items-center gap-4 p-2 md:h-auto md:basis-1/8 md:items-start">
+			<Link href={baseUrl} className="hidden md:block">
+				<h2 className="w-full font-medium font-zenitha text-2xl">{name}</h2>
 			</Link>
-			<ul className='flex-1 flex flex-col gap-2 text-sm pl-2  max-md:flex-row max-md:overflow-x-scroll max-md:max-w-full max-md:px-36 max-md:h-full max-md:w-full max-md:snap-x max-md:snap-mandatory max-md:no-scrollbar max-md:gap-0'>
+			<ul className="no-scrollbar flex h-full max-w-full grow snap-x snap-mandatory flex-row gap-0 overflow-x-scroll px-36 text-sm md:snap-none md:flex-col md:gap-2 md:overflow-hidden md:px-0 md:pl-2">
 				{projects.map(({ name, slug, photos, videos }, i: number) => {
 					const isCurrent: boolean =
 						pathname.split(baseUrl)[1] === slug.current;
@@ -42,12 +42,12 @@ export const ProjectList = ({
 					return (
 						<li
 							key={slug.current + i}
-							className={`max-md:flex max-md:snap-center max-md:justify-center max-md:items-center max-md:not-last:*:border-r transition-all`}
+							className={`flex snap-center items-center justify-center transition-all not-last:*:border-r md:block md:not-last:*:border-none`}
 							ref={isCurrent ? activeRef : null}
 						>
 							<Link
 								href={`${baseUrl}${encodeURIComponent(slug.current)}`}
-								className={`${isCurrent ? 'underline opacity-100' : ''}  opacity-65 hover:opacity-100 hover:underline underline-offset-8 decoration-wavy decoration-from-font max-md:underline-offset-2 max-md:w-full max-md:text-nowrap max-md:px-4`}
+								className={`${isCurrent ? "underline opacity-100" : ""} w-full text-nowrap px-4 decoration-from-font decoration-wavy underline-offset-2 opacity-65 hover:underline hover:opacity-100 md:text-wrap md:px-0 md:underline-offset-8`}
 							>
 								{name!.toUpperCase()}
 							</Link>
