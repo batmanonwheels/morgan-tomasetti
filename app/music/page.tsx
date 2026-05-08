@@ -12,7 +12,7 @@ export default async function Music() {
 				src={cover}
 				width={width}
 				height={height}
-				className="m-auto h-full w-auto rounded-lg object-cover"
+				className="m-auto h-full max-h-full w-auto rounded-lg object-cover"
 			/>
 		</ViewTransition>
 	);
