@@ -26,7 +26,7 @@ export const ProjectList = ({
 	}, []);
 
 	return (
-		<aside className="flex h-10 w-full flex-col items-center gap-4 p-2 md:h-auto md:basis-1/8 md:items-start">
+		<aside className="flex h-10 w-full flex-col items-center gap-4 p-2 md:h-auto md:min-w-1/8 md:basis-1/8 md:items-start">
 			<Link href={baseUrl} className="hidden md:block">
 				<h2 className="w-full font-medium font-zenitha text-2xl">{name}</h2>
 			</Link>
@@ -47,7 +47,7 @@ export const ProjectList = ({
 						>
 							<Link
 								href={`${baseUrl}${encodeURIComponent(slug.current)}`}
-								className={`${isCurrent ? "underline opacity-100" : ""} w-full text-nowrap px-4 decoration-from-font decoration-wavy underline-offset-2 opacity-65 hover:underline hover:opacity-100 md:text-wrap md:px-0 md:underline-offset-8`}
+								className={`${isCurrent ? "underline opacity-100" : ""} w-full text-nowrap px-4 decoration-from-font decoration-wavy underline-offset-2 opacity-65 hover:underline hover:opacity-100 md:text-wrap md:px-0 md:underline-offset-4`}
 							>
 								{name!.toUpperCase()}
 							</Link>
