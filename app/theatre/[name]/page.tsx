@@ -1,8 +1,8 @@
-import { Project } from '@/sanity.types';
-import { client } from '@/sanity/lib/client';
-import { ProjectCard } from '@/components/project-card';
-import { PROJECT_QUERY } from '@/lib/queries';
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { ProjectCard } from "@/components/project-card";
+import { PROJECT_QUERY } from "@/lib/queries";
+import { client } from "@/sanity/lib/client";
+import { Project } from "@/sanity.types";
 
 export async function generateMetadata({
 	params,

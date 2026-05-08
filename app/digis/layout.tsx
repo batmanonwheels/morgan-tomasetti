@@ -1,20 +1,18 @@
-import { Field } from '@/sanity.types';
-import { client } from '../../sanity/lib/client';
-import { ProjectList } from '@/components/project-list';
-import { PROJECT_LIST_QUERY } from '@/lib/queries';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport } from "next";
+import { MainContainer } from "@/components/main-container";
+import { ProjectList } from "@/components/project-list";
+import { PROJECT_LIST_QUERY } from "@/lib/queries";
+import { Field } from "@/sanity.types";
+import { client } from "../../sanity/lib/client";
 
 export const viewport: Viewport = {
-	themeColor: '#f29d96',
+	themeColor: "#f29d96",
 };
 
 export const metadata: Metadata = {
-	title: 'Digis | Morgan Tomasetti',
-	description: 'Actress',
+	title: "DIGIS | Morgan Tomasetti",
 	openGraph: {
-		title: 'Digis | Morgan Tomasetti',
-		description: 'Actress',
-		images: '',
+		title: "DIGIS | Morgan Tomasetti",
 	},
 };
 
@@ -24,16 +22,15 @@ export default async function DigisLayout({
 	children: React.ReactNode;
 }>) {
 	const { name, projects } = await client.fetch<Field>(
-		PROJECT_LIST_QUERY('Digis'),
+		PROJECT_LIST_QUERY("Digis"),
 	);
 
 	return (
-		// <main className='col-span-full row-span-7 grid grid-cols-10 grid-rows-8 gap-4 p-4'>
-		<main className='col-span-full row-span-7 flex gap-4 p-4 max-md:flex-col-reverse max-md:p-2 max-md:gap-2'>
+		<MainContainer className="flex-col-reverse gap-2">
 			{projects && (
-				<ProjectList projects={projects} baseUrl={'/digis/'} name={name} />
+				<ProjectList projects={projects} baseUrl={"/digis/"} name={name} />
 			)}
 			{children}
-		</main>
+		</MainContainer>
 	);
 }

@@ -1,20 +1,18 @@
-import { Field } from '@/sanity.types';
-import { client } from '../../sanity/lib/client';
-import { ProjectList } from '@/components/project-list';
-import { PROJECT_LIST_QUERY } from '@/lib/queries';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport } from "next";
+import { MainContainer } from "@/components/main-container";
+import { ProjectList } from "@/components/project-list";
+import { PROJECT_LIST_QUERY } from "@/lib/queries";
+import { Field } from "@/sanity.types";
+import { client } from "../../sanity/lib/client";
 
 export const viewport: Viewport = {
-	themeColor: '#f9d5d2',
+	themeColor: "#f9d5d2",
 };
 
 export const metadata: Metadata = {
-	title: 'Commercial | Morgan Tomasetti',
-	description: 'Actress',
+	title: "COMMERCIAL | Morgan Tomasetti",
 	openGraph: {
-		title: 'Commercial | Morgan Tomasetti',
-		description: 'Actress',
-		images: '',
+		title: "COMMERCIAL | Morgan Tomasetti",
 	},
 };
 
@@ -24,15 +22,17 @@ export default async function CommercialLayout({
 	children: React.ReactNode;
 }>) {
 	const { name, projects } = await client.fetch<Field>(
-		PROJECT_LIST_QUERY('Commercial'),
+		PROJECT_LIST_QUERY("Commercial"),
 	);
 
 	return (
-		<main className='col-span-full row-span-7 flex gap-4 p-4 max-md:flex-col-reverse max-md:p-2 max-md:gap-2'>
+		// <main className="flex basis-7/8 flex-col-reverse gap-2 px-2 pt-2 md:flex-row md:gap-4 md:p-4">
+		<MainContainer className="flex-col-reverse gap-2">
 			{projects && (
-				<ProjectList projects={projects} baseUrl={'/commercial/'} name={name} />
+				<ProjectList projects={projects} baseUrl={"/commercial/"} name={name} />
 			)}
 			{children}
-		</main>
+		</MainContainer>
+		// </main>
 	);
 }
