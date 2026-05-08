@@ -72,7 +72,7 @@ export const Footer = () => {
 								ref={isCurrent ? activeRef : null}
 							>
 								<Link
-									className={`${isCurrent ? "underline opacity-100" : ""} decoration-from-font decoration-wavy underline-offset-2 opacity-65 lg:underline-offset-8 lg:hover:underline lg:hover:opacity-100`}
+									className={`${isCurrent ? "underline opacity-100" : ""} decoration-from-font decoration-wavy underline-offset-2 opacity-65 lg:underline-offset-4 lg:hover:underline lg:hover:opacity-100`}
 									href={link}
 									// onMouseOver={() => setBgColor(bg)}
 								>
