@@ -20,6 +20,10 @@ export const ProjectCard = ({
 	music = [],
 	slug,
 }: ProjectCardProps) => {
+	const cleanSpotifyEmbed = (str: string): string => {
+		return str.split('src="')[1].split('"')[0];
+	};
+
 	const [currentItem, setCurrentItem] = useState<(string | number)[]>(
 		photos[0]
 			? [
@@ -32,7 +36,9 @@ export const ProjectCard = ({
 					photos[0].dimensions!.width,
 					photos[0].dimensions!.height,
 				]
-			: ["video", videos[0].link, 0, 0],
+			: videos[0]
+				? ["video", videos[0].link, 0, 0]
+				: ["song", cleanSpotifyEmbed(music[0].spotifyEmbedLink), 0, 0],
 	);
 
 	const handleSetItem = (
@@ -43,9 +49,7 @@ export const ProjectCard = ({
 		height?: number,
 	) => {
 		if (type === "song" && !!link) {
-			if (link.includes("<iframe")) {
-				link = link.split('src="')[1].split('"')[0];
-			}
+			cleanSpotifyEmbed(link);
 			setCurrentItem([type, link, 0, 0]);
 		}
 
@@ -62,6 +66,10 @@ export const ProjectCard = ({
 	const [type, link, width, height] = currentItem;
 
 	const multipleItems = [...music, ...videos, ...photos].length > 1;
+
+	// if (!multipleItems) {
+	// 	if (music.length > 0) handleSetItem("song", music[0].spotifyEmbedLink);
+	// }
 
 	return (
 		<section

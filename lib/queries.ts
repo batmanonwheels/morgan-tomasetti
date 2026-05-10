@@ -59,6 +59,9 @@ name,
       "videos": *[_type == "video" && references(^._id)][isVisible]{
       description,
       },
+      "music":  *[_type == "song" && references(^._id)][isVisible]{
+         name,
+      },
 	   },
       }`;
 

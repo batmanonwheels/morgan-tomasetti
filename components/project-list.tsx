@@ -32,11 +32,12 @@ export const ProjectList = ({
 				<h2 className="w-full font-medium font-zenitha text-2xl">{name}</h2>
 			</Link>
 			<ul className="no-scrollbar flex h-full max-w-full grow snap-x snap-mandatory flex-row gap-0 overflow-x-scroll px-36 text-sm md:snap-none md:flex-col md:gap-2 md:overflow-hidden md:px-0 md:pl-2">
-				{projects.map(({ name, slug, photos, videos }, i: number) => {
+				{projects.map(({ name, slug, photos, videos, music }, i: number) => {
 					const isCurrent: boolean =
 						pathname.split(baseUrl)[1] === slug.current;
 
-					const isEmpty: boolean = photos.length <= 0 && videos.length <= 0;
+					const isEmpty: boolean =
+						photos.length <= 0 && videos.length <= 0 && music.length <= 0;
 
 					if (isEmpty) return;
 
