@@ -29,10 +29,8 @@ const caprasimo = Caprasimo({
 
 export const metadata: Metadata = {
 	title: "Morgan Tomasetti",
-	description: "NYC-BASED ACTRESS",
 	openGraph: {
 		title: "Morgan Tomasetti",
-		description: "NYC-BASED ACTRESS",
 		images:
 			"https://cdn.sanity.io/images/0a7f8a0o/production/5841243fe8695737a0008383d941acaf25c2b197-1371x1920.webp",
 	},
