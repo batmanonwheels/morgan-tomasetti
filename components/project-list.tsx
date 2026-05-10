@@ -17,13 +17,14 @@ export const ProjectList = ({
 	const pathname = usePathname();
 	const activeRef = useRef<HTMLLIElement | null>(null);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <NEED FOR MOBILE NAV CAROUSEL>
 	useEffect(() => {
 		activeRef.current?.scrollIntoView({
 			behavior: "smooth",
 			block: "nearest",
 			inline: "center",
 		});
-	}, []);
+	}, [pathname]);
 
 	return (
 		<aside className="flex h-10 w-full flex-col items-center gap-4 p-2 md:h-auto md:min-w-1/8 md:basis-1/8 md:items-start">

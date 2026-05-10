@@ -28,9 +28,11 @@ export default async function ProjectPage({
 }) {
 	const { name } = await params;
 
-	const { slug, photos, videos } = await client.fetch<Project>(
+	const { slug, photos, videos, music } = await client.fetch<Project>(
 		PROJECT_QUERY(name),
 	);
 
-	return <ProjectCard slug={slug} photos={photos} videos={videos} />;
+	return (
+		<ProjectCard slug={slug} photos={photos} videos={videos} music={music} />
+	);
 }

@@ -20,8 +20,10 @@ export default async function Gallery() {
 	const photos = await client.fetch<Photo[]>(PHOTOS_QUERY());
 
 	return (
-		<MainContainer isScrollable={true} className={"block pb-2"}>
-			<ImageGallery photos={photos} />
+		<MainContainer isScrollable={true} className={""}>
+			<div className="no-scrollbar min-h-0 min-w-0 h-full w-full overflow-y-scroll rounded-lg">
+				<ImageGallery photos={photos} />
+			</div>
 		</MainContainer>
 	);
 }

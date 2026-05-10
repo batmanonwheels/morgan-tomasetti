@@ -12,9 +12,11 @@ type ImageGalleryProps = {
 
 export default function ImageGallery({ photos }: ImageGalleryProps) {
 	return (
-		<MasonryGrid className="h-full w-full" gap={".5rem"} frameWidth={"10rem"}>
-			{photos.map(
-				({ description, portrait, dimensions: { width, height } }, i) => {
+		<MasonryGrid className="" gap={".5rem"} frameWidth={"10rem"}>
+			{photos
+				// eslint-disable-next-line react-hooks/purity
+				.sort(() => Math.random() - 0.5)
+				.map(({ description, portrait, dimensions: { width, height } }, i) => {
 					const photoUrl = portrait
 						? urlFor(portrait, width, height)!.fit("max").quality(100).url()
 						: "";
@@ -46,8 +48,7 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
 							/>
 						</Frame>
 					);
-				},
-			)}
+				})}
 		</MasonryGrid>
 	);
 }

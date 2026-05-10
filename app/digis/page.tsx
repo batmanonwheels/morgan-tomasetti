@@ -15,7 +15,7 @@ export default async function Digis() {
 				}
 				width={1920}
 				height={1080}
-				className="m-auto h-full max-h-full w-auto rounded-lg object-cover"
+				className="m-auto min-w-0 min-h-0 h-full max-h-full w-auto rounded-lg object-cover"
 			/>
 		</ViewTransition>
 	);

@@ -48,7 +48,7 @@ export const Footer = () => {
 
 	return (
 		<footer
-			className={`fixed bottom-0 left-0 z-100 flex h-1/7 w-full items-center border-t bg-inherit p-2 transition-colors ${pathname === "/" ? "border-t-jinza-safflower-bg lg:hover:border-t-black" : `border-t-black`} lg:h-1/8 lg:p-6`}
+			className={`fixed bottom-0 left-0 z-100 flex h-1/7 w-full items-center border-t bg-inherit p-2 transition-all ${pathname === "/" ? "border-t-jinza-safflower-bg lg:hover:border-t-black" : `border-t-black`} lg:h-1/8 lg:p-6`}
 			id="footer"
 			// onMouseLeave={() => setBgColor(pathnameToColor(pathname))}
 		>
