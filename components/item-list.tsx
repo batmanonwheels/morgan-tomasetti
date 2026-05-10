@@ -1,12 +1,14 @@
 import { SanityImageSource } from "@sanity/image-url";
 import { ImageCard } from "@/components/image-card";
 import { urlFor } from "@/lib/urlForImage";
-import { Photo, Video } from "@/sanity.types";
+import { Photo, Song, Video } from "@/sanity.types";
 import { VideoCard } from "./video-card";
+import { SongCard } from "./song-card";
 
 type ItemListProps = {
 	photos: Photo[];
 	videos: Video[];
+	music: Song[];
 	handleSetItem: (
 		type: string,
 		link?: string,
@@ -16,9 +18,25 @@ type ItemListProps = {
 	) => void;
 };
 
-export const ItemList = ({ photos, videos, handleSetItem }: ItemListProps) => {
+export const ItemList = ({
+	photos,
+	videos,
+	music,
+	handleSetItem,
+}: ItemListProps) => {
 	return (
-		<ul className="no-scrollbar flex max-h-14 flex-row justify-center gap-2 overflow-y-scroll rounded-lg md:max-h-full md:basis-1/8 md:flex-col md:items-start md:justify-start md:gap-4">
+		<ul className="no-scrollbar flex min-h-1/12 max-h-1/12 w-full basis-1/12 flex-row justify-center gap-2 overflow-x-scroll rounded-lg md:overflow-x-hidden md:overflow-y-scroll md:min-h-full md:max-h-full md:basis-1/8 md:flex-col md:items-start md:justify-start md:gap-4">
+			{music &&
+				music.map(({ spotifyEmbedLink, name }, i) => {
+					return (
+						<SongCard
+							src={spotifyEmbedLink}
+							name={name}
+							handleSetItem={handleSetItem}
+							key={i}
+						/>
+					);
+				})}
 			{videos &&
 				videos.map(({ description, link }, i) => {
 					return (

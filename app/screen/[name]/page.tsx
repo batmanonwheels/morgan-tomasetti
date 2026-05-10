@@ -32,6 +32,5 @@ export default async function ProjectPage({
 		PROJECT_QUERY(name),
 	);
 
-	console.log(photos[0]);
 	return <ProjectCard slug={slug} photos={photos} videos={videos} />;
 }

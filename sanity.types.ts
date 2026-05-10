@@ -12,21 +12,21 @@
  * ---------------------------------------------------------------------------------
  */
 
-import { SanityImageSource } from "@sanity/image-url";
+import { SanityImageSource } from '@sanity/image-url';
 
 // Source: schema.json
 export type Photo = {
 	_id: string;
-	_type: "photo";
+	_type: 'photo';
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
 	description: string;
 	category?: {
 		_ref: string;
-		_type: "reference";
+		_type: 'reference';
 		_weak?: boolean;
-		[internalGroqTypeReferenceTo]?: "project";
+		[internalGroqTypeReferenceTo]?: 'project';
 	};
 	portrait: SanityImageSource;
 	isVisible: boolean;
@@ -40,23 +40,41 @@ export type Photo = {
 
 export type Video = {
 	_id: string;
-	_type: "video";
+	_type: 'video';
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
 	description: string;
 	category?: {
 		_ref: string;
-		_type: "reference";
+		_type: 'reference';
 		_weak?: boolean;
-		[internalGroqTypeReferenceTo]?: "project";
+		[internalGroqTypeReferenceTo]?: 'project';
 	};
 	link: string;
 	isVisible: boolean;
 };
 
+export type Song = {
+	_id: string;
+	_type: 'song';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	name: string;
+	description: string;
+	category?: {
+		_ref: string;
+		_type: 'reference';
+		_weak?: boolean;
+		[internalGroqTypeReferenceTo]?: 'project';
+	};
+	spotifyEmbedLink: string;
+	isVisible: boolean;
+};
+
 export type SanityImageCrop = {
-	_type: "sanity.imageCrop";
+	_type: 'sanity.imageCrop';
 	top?: number;
 	bottom?: number;
 	left?: number;
@@ -64,7 +82,7 @@ export type SanityImageCrop = {
 };
 
 export type SanityImageHotspot = {
-	_type: "sanity.imageHotspot";
+	_type: 'sanity.imageHotspot';
 	x?: number;
 	y?: number;
 	height?: number;
@@ -73,20 +91,21 @@ export type SanityImageHotspot = {
 
 export type Project = {
 	_id: string;
-	_type: "project";
+	_type: 'project';
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
 	name?: string;
 	field?: {
 		_ref: string;
-		_type: "reference";
+		_type: 'reference';
 		_weak?: boolean;
-		[internalGroqTypeReferenceTo]?: "field";
+		[internalGroqTypeReferenceTo]?: 'field';
 	};
 	slug: Slug;
 	photos: Photo[];
 	videos: Video[];
+	music: Song[];
 };
 
 export type ProjectsWithPhotos = {
@@ -96,7 +115,7 @@ export type ProjectsWithPhotos = {
 
 export type Field = {
 	_id: string;
-	_type: "field";
+	_type: 'field';
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
@@ -105,7 +124,7 @@ export type Field = {
 };
 
 export type SanityImagePaletteSwatch = {
-	_type: "sanity.imagePaletteSwatch";
+	_type: 'sanity.imagePaletteSwatch';
 	background?: string;
 	foreground?: string;
 	population?: number;
@@ -113,7 +132,7 @@ export type SanityImagePaletteSwatch = {
 };
 
 export type SanityImagePalette = {
-	_type: "sanity.imagePalette";
+	_type: 'sanity.imagePalette';
 	darkMuted?: SanityImagePaletteSwatch;
 	lightVibrant?: SanityImagePaletteSwatch;
 	darkVibrant?: SanityImagePaletteSwatch;
@@ -124,14 +143,14 @@ export type SanityImagePalette = {
 };
 
 export type SanityImageDimensions = {
-	_type: "sanity.imageDimensions";
+	_type: 'sanity.imageDimensions';
 	height?: number;
 	width?: number;
 	aspectRatio?: number;
 };
 
 export type SanityImageMetadata = {
-	_type: "sanity.imageMetadata";
+	_type: 'sanity.imageMetadata';
 	location?: Geopoint;
 	dimensions?: SanityImageDimensions;
 	palette?: SanityImagePalette;
@@ -143,7 +162,7 @@ export type SanityImageMetadata = {
 
 export type SanityFileAsset = {
 	_id: string;
-	_type: "sanity.fileAsset";
+	_type: 'sanity.fileAsset';
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
@@ -164,7 +183,7 @@ export type SanityFileAsset = {
 };
 
 export type SanityAssetSourceData = {
-	_type: "sanity.assetSourceData";
+	_type: 'sanity.assetSourceData';
 	name?: string;
 	id?: string;
 	url?: string;
@@ -172,7 +191,7 @@ export type SanityAssetSourceData = {
 
 export type SanityImageAsset = {
 	_id: string;
-	_type: "sanity.imageAsset";
+	_type: 'sanity.imageAsset';
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
@@ -194,14 +213,14 @@ export type SanityImageAsset = {
 };
 
 export type Geopoint = {
-	_type: "geopoint";
+	_type: 'geopoint';
 	lat?: number;
 	lng?: number;
 	alt?: number;
 };
 
 export type Slug = {
-	_type: "slug";
+	_type: 'slug';
 	current: string;
 	source: string;
 };

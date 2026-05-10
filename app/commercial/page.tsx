@@ -12,7 +12,7 @@ export default async function Commercial() {
 				src={cover!}
 				width={1920}
 				height={1080}
-				className="m-auto grow rounded-lg object-cover"
+				className="m-auto min-w-0 min-h-0 max-h-full grow rounded-lg object-cover"
 			/>
 		</ViewTransition>
 	);

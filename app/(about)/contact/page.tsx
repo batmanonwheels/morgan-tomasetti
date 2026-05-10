@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default async function Contact() {
 	const { width, height, cover } = await getRandomFieldPhoto("Headshots");
-	const subtitle: string = "Let's stay in touch.";
+	const subtitle: string = "Let's stay in touch!";
 	const representation: string[] = [
 		"CESD Talent - On-Camera Commercial and Print",
 		"Firestarter Entertainment - Musical Theatre",
@@ -129,7 +129,7 @@ export default async function Contact() {
 					src={cover}
 					width={width}
 					height={height}
-					className="h-[37vh] w-full rounded-lg object-cover object-top md:h-full"
+					className="basis-1/2 min-w-0 min-h-0 w-full rounded-lg object-cover object-top md:h-full"
 				/>
 			</ViewTransition>
 		</MainContainer>
