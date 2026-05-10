@@ -105,7 +105,7 @@ export const ProjectCard = ({
 					{typeof link == "string" && type === "video" && (
 						<iframe
 							src={link}
-							className="aspect-video m-auto h-auto w-full rounded-lg bg-black object-cover"
+							className="aspect-video m-auto h-full w-full rounded-lg bg-black object-cover"
 							allowFullScreen
 							allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						></iframe>
@@ -113,7 +113,7 @@ export const ProjectCard = ({
 					{typeof link == "string" && type === "song" && (
 						<iframe
 							data-testid="embed-iframe"
-							className="rounded-lg"
+							className="rounded-lg max-w-4xl"
 							src={link}
 							width="100%"
 							height="352"
