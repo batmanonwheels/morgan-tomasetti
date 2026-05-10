@@ -20,7 +20,7 @@ export const VideoCard = ({ src, desc, handleSetItem }: VideoCardProps) => {
 	};
 
 	return (
-		<li className="relative min-w-0 min-h-0 h-full md:w-auto">
+		<li className="relative min-w-0 min-h-0 h-full w-auto md:w-full">
 			<Image
 				src={generateThumbnail(src)!}
 				alt={desc}

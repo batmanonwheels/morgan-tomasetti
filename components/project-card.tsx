@@ -73,7 +73,7 @@ export const ProjectCard = ({
 
 	return (
 		<section
-			className="flex flex-col-reverse h-full max-h-[calc(100%-3rem)] items-center justify-between gap-2 rounded-xl md:flex-row md:items-start md:gap-4"
+			className="flex flex-col-reverse h-full max-h-[calc(100%-3rem)] items-center justify-between gap-2 rounded-xl md:max-h-full md:basis-7/8 md:flex-row md:items-start md:gap-4"
 			id={slug.current}
 		>
 			{multipleItems && (
@@ -99,13 +99,13 @@ export const ProjectCard = ({
 								width={width!}
 								height={height}
 								loading="eager"
-								className="m-auto h-full w-auto rounded-lg object-cover md:object-none"
+								className="m-auto h-full w-auto rounded-lg object-cover"
 							/>
 						)}
 					{typeof link == "string" && type === "video" && (
 						<iframe
 							src={link}
-							className="aspect-video m-auto h-full w-full rounded-lg bg-black object-cover"
+							className="aspect-video m-auto h-auto w-full rounded-lg bg-black object-cover"
 							allowFullScreen
 							allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						></iframe>

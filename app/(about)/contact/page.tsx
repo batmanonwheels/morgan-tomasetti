@@ -26,8 +26,8 @@ export default async function Contact() {
 
 	return (
 		<MainContainer className="p-2 md:items-center md:overflow-hidden">
-			<section className="flex basis-1/2 flex-col gap-4 p-2 px-4 md:justify-center md:align-middle">
-				<div className="mt-2.5 flex flex-col justify-between md:mt-0">
+			<section className="flex basis-1/2 flex-col gap-4 p-2 px-4 md:justify-center md:items-center">
+				<div className="mt-2.5 flex flex-col justify-between md:mt-0 md:w-1/2">
 					<h1 className="py-2 font-zenitha text-5xl md:py-4 md:text-7xl">
 						Contact
 					</h1>
@@ -109,7 +109,7 @@ export default async function Contact() {
 					</div>
 				</div>
 
-				<div className="flex w-full flex-col gap-2">
+				<div className="flex w-full flex-col gap-2 md:w-1/2">
 					<h3 className="font-bold font-mono text-sm md:text-base">
 						REPRESENTATION
 					</h3>
