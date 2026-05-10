@@ -28,7 +28,7 @@ export const FIELD_VIDEOS_THUMBNAIL_QUERY = (
 	field: string,
 ) => `*[_type == "field" && name == "${field}"]{
   "projects": *[_type == "project" && references(^._id)]{
-    "videos": *[_type == "video" && references(^._id) && description match "OLLY"][isVisible]{
+    "videos": *[_type == "video" && references(^._id) && link match "*youtube*"][isVisible]{
          link, description
       },
   },
