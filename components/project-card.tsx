@@ -67,10 +67,6 @@ export const ProjectCard = ({
 
 	const multipleItems = [...music, ...videos, ...photos].length > 1;
 
-	// if (!multipleItems) {
-	// 	if (music.length > 0) handleSetItem("song", music[0].spotifyEmbedLink);
-	// }
-
 	return (
 		<section
 			className="flex flex-col-reverse h-full max-h-[calc(100%-3rem)] items-center justify-between gap-2 rounded-xl md:max-h-full md:basis-7/8 md:flex-row md:items-start md:gap-4"
