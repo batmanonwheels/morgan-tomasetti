@@ -10,7 +10,7 @@ import { Photo, Slug, Song, Video } from "@/sanity.types";
 type ProjectCardProps = {
 	photos: Photo[];
 	videos: Video[];
-	music: Song[];
+	music?: Song[];
 	slug: Slug;
 };
 

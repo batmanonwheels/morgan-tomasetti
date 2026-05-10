@@ -78,6 +78,9 @@ export const PROJECT_QUERY = (project: string) =>
       "videos": *[_type == "video" && references(^._id)][isVisible]{
          link, description
       },
+      "music": *[_type == "song" && references(^._id)][isVisible]{
+         spotifyEmbedLink, name
+      },
    }`;
 
 export const PHOTOS_QUERY = () => `*[_type=="photo"]{
