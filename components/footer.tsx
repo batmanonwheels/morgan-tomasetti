@@ -61,7 +61,7 @@ export const Footer = () => {
 						Morgan Tomasetti
 					</h1>
 				</Link>
-				<ul className="no-scrollbar flex h-10 max-w-full snap-x snap-mandatory items-center gap-4 overflow-x-scroll px-40 lg:snap-none lg:gap-4 lg:overflow-x-auto lg:px-0 lg:text-[clamp(.25rem,2vw,1rem)]">
+				<ul className="no-scrollbar flex h-10 max-w-full snap-x snap-mandatory items-center gap-4 overflow-x-scroll px-40 italic font-light  lg:snap-none lg:gap-4 lg:overflow-x-auto lg:px-0 lg:text-[clamp(.25rem,2vw,1rem)]">
 					{directory.map(([title, link], i) => {
 						const isCurrent: boolean = "/" + pathname.split("/")[1] === link;
 
