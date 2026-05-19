@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default async function Contact() {
 	const { width, height, cover } = await getRandomFieldPhoto("Headshots");
-	const subtitle: string = "Let's stay in touch!";
 	const representation: string[] = [
+		"Take 3 Talent - TV/Film",
 		"CESD Talent - On-Camera Commercial and Print",
 		"Firestarter Entertainment - Musical Theatre",
 		"LETM, LLC- Lang Ellis Talent Management",
@@ -26,17 +26,14 @@ export default async function Contact() {
 
 	return (
 		<MainContainer className="p-2 md:items-center md:overflow-hidden">
-			<section className="flex basis-1/2 flex-col gap-4 p-2 px-4 md:justify-center md:items-center">
-				<div className="mt-2.5 flex flex-col justify-between md:mt-0 md:w-1/2">
+			<section className="flex basis-1/2 flex-col gap-4 p-2 px-4 md:justify-center md:items-center md:*:w-3/4">
+				<div className="mt-2.5 flex flex-col justify-between md:mt-0">
 					<h1 className="py-2 font-zenitha text-5xl md:py-4 md:text-7xl">
 						Contact
 					</h1>
-					<h3 className="font-caprasimo text-sm md:text-xl">
-						{subtitle.toUpperCase()}
-					</h3>
 				</div>
 
-				<div className="flex w-full flex-col gap-2 md:w-1/2">
+				<div className="flex w-full flex-col gap-2">
 					<h3 className="font-bold font-mono text-sm md:text-base">SOCIALS</h3>
 					<div className="flex h-6 w-4/5 justify-between gap-1">
 						<a
@@ -122,7 +119,7 @@ export default async function Contact() {
 					</div>
 				</div>
 
-				<div className="flex w-full flex-col gap-2 md:w-1/2">
+				<div className="flex w-full flex-col gap-2">
 					<h3 className="font-bold font-mono text-sm md:text-base">
 						REPRESENTATION
 					</h3>
