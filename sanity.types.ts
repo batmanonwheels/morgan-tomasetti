@@ -45,6 +45,7 @@ export type Video = {
 	_updatedAt: string;
 	_rev: string;
 	description: string;
+	thumbnail?: SanityImageSource;
 	category?: {
 		_ref: string;
 		_type: 'reference';

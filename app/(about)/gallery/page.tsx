@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import ImageGallery from "@/components/image-gallery";
+import ImageGallery from "@/components/gallery";
 import { MainContainer } from "@/components/main-container";
 import { PHOTOS_QUERY } from "@/lib/queries";
 import { client } from "@/sanity/lib/client";
@@ -22,7 +22,7 @@ export default async function Gallery() {
 	return (
 		<MainContainer isScrollable={true} className={""}>
 			<div className="no-scrollbar min-h-0 min-w-0 h-full w-full overflow-y-scroll rounded-lg">
-				<ImageGallery photos={photos} />
+				<ImageGallery photos={photos} gap={".5rem"} frameWidth={"10rem"} />
 			</div>
 		</MainContainer>
 	);

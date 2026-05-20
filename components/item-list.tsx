@@ -25,7 +25,7 @@ export const ItemList = ({
 	handleSetItem,
 }: ItemListProps) => {
 	return (
-		<ul className="no-scrollbar flex min-h-1/12 max-h-1/12 w-full basis-1/12 flex-row justify-center gap-2 overflow-x-scroll rounded-lg md:overflow-x-hidden md:overflow-y-scroll md:min-h-full md:max-h-full md:basis-1/8 md:flex-col md:items-start md:justify-start md:gap-4">
+		<ul className="hidden no-scrollbar min-h-1/12 max-h-1/12 w-full basis-1/12 flex-row justify-center gap-2 overflow-x-scroll rounded-lg md:flex md:overflow-x-hidden md:overflow-y-scroll md:min-h-full md:max-h-full md:basis-1/8 md:flex-col md:items-start md:justify-start md:gap-4">
 			{music &&
 				music.map(({ spotifyEmbedLink, name }, i) => {
 					return (

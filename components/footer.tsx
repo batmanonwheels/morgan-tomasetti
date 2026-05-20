@@ -16,6 +16,7 @@ export const Footer = () => {
 		["TV/FILM", "/screen", "bg-jinza-safflower-5"],
 		["MUSIC", "/music", "bg-jinza-safflower-4"],
 		// ['DIGIS', '/digis', 'bg-jinza-safflower-3'],
+		["REELS", "/reels", "bg-jinza-safflower-3"],
 		["HEADSHOTS", "/headshots", "bg-jinza-safflower-2"],
 		["GALLERY", "/gallery", "bg-jinza-safflower-1"],
 		["CONTACT", "/contact", "bg-jinza-safflower-1"],
