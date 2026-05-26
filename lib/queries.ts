@@ -3,6 +3,7 @@ export const FIELD_PHOTOS_QUERY = (
 ) => `*[_type == "field" && name == "${field}"]{
   "projects": *[_type == "project" && references(^._id)]{
     "photos": *[_type == "photo" && references(^._id)][isVisible]{
+      _id,
       description,
       portrait,
       "dimensions": portrait.asset->metadata.dimensions {
@@ -19,6 +20,7 @@ export const FIELD_VIDEOS_QUERY = (
 ) => `*[_type == "field" && name == "${field}"]{
          "projects": *[_type == "project" && references(^._id)]{
             "videos": *[_type == "video" && references(^._id)][isVisible]{
+                  _id,
                   link,
                   description,
                   thumbnail,
@@ -31,6 +33,7 @@ export const FIELD_VIDEOS_THUMBNAIL_QUERY = (
 ) => `*[_type == "field" && name == "${field}"]{
          "projects": *[_type == "project" && references(^._id)]{
                   "videos": *[_type == "video" && references(^._id) && link match "*youtube*"][isVisible]{
+                     _id,
                      link,
                      description,
                      thumbnail,

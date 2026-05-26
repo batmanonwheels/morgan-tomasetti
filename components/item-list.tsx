@@ -1,4 +1,3 @@
-import { SanityImageSource } from "@sanity/image-url";
 import { ImageCard } from "@/components/image-card";
 import { urlFor } from "@/lib/urlForImage";
 import { Photo, Song, Video } from "@/sanity.types";
@@ -48,6 +47,7 @@ export const ItemList = ({
 				photos.map(
 					(
 						{
+							_id,
 							description,
 							portrait,
 							dimensions: { width, height, aspectRatio },
