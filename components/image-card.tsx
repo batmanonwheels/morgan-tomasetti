@@ -2,22 +2,18 @@ import { SanityImageSource } from "@sanity/image-url";
 import Image from "next/image";
 
 type ImageCardProps = {
+	id: string;
 	portrait: SanityImageSource;
 	src: string;
 	desc: string;
 	w: number;
 	h: number;
 	r: string;
-	handleSetItem: (
-		type: string,
-		link?: string,
-		portrait?: SanityImageSource,
-		width?: number,
-		height?: number,
-	) => void;
+	handleSetItem: (type: string, id: string) => void;
 };
 
 export const ImageCard = ({
+	id,
 	portrait,
 	src,
 	desc,
@@ -27,7 +23,7 @@ export const ImageCard = ({
 	handleSetItem,
 }: ImageCardProps) => {
 	const handleSetActive = () => {
-		handleSetItem("image", undefined, portrait, w, h);
+		handleSetItem("image", id);
 	};
 
 	return (

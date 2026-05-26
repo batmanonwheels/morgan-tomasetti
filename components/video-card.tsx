@@ -3,20 +3,15 @@ import Image from "next/image";
 import { generateThumbnail } from "@/lib/generateThumbnail";
 
 type VideoCardProps = {
+	id: string;
 	src: string;
 	desc: string;
-	handleSetItem: (
-		type: string,
-		link?: string,
-		portrait?: SanityImageSource,
-		width?: number,
-		height?: number,
-	) => void;
+	handleSetItem: (type: string, id: string) => void;
 };
 
-export const VideoCard = ({ src, desc, handleSetItem }: VideoCardProps) => {
+export const VideoCard = ({ id, src, desc, handleSetItem }: VideoCardProps) => {
 	const handleSetActive = () => {
-		handleSetItem("video", src);
+		handleSetItem("video", id);
 	};
 
 	return (

@@ -1,20 +1,15 @@
 import type { SanityImageSource } from "@sanity/image-url";
 
 type SongCardProps = {
+	id: string;
 	src: string;
 	name: string;
-	handleSetItem: (
-		type: string,
-		link?: string,
-		portrait?: SanityImageSource,
-		width?: number,
-		height?: number,
-	) => void;
+	handleSetItem: (type: string, id: string) => void;
 };
 
-export const SongCard = ({ src, name, handleSetItem }: SongCardProps) => {
+export const SongCard = ({ id, src, name, handleSetItem }: SongCardProps) => {
 	const handleSetActive = () => {
-		handleSetItem("song", src);
+		handleSetItem("song", id);
 	};
 
 	return (

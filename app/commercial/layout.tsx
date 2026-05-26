@@ -26,13 +26,11 @@ export default async function CommercialLayout({
 	);
 
 	return (
-		// <main className="flex basis-7/8 flex-col-reverse gap-2 px-2 pt-2 md:flex-row md:gap-4 md:p-4">
 		<MainContainer className="flex-col-reverse gap-2">
 			{projects && (
 				<ProjectList projects={projects} baseUrl={"/commercial/"} name={name} />
 			)}
 			{children}
 		</MainContainer>
-		// </main>
 	);
 }

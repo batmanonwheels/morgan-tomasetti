@@ -1,13 +1,13 @@
-"use client";
-
-import { SanityImageSource } from "@sanity/image-url";
 import Image from "next/image";
-import { useState, ViewTransition } from "react";
+import { ViewTransition } from "react";
 import { ItemList } from "@/components/item-list";
 import { urlFor } from "@/lib/urlForImage";
 import { Photo, Slug, Song, Video } from "@/sanity.types";
 import ImageGallery from "./gallery";
 import { cleanSpotifyEmbed } from "@/lib/cleanSpotifyEmbed";
+import { ITEM_QUERY } from "@/lib/queries";
+import { client } from "@/sanity/lib/client";
+import Iframe from "./iframe";
 
 type ProjectCardProps = {
 	photos: Photo[];
@@ -22,184 +22,50 @@ export const ProjectCard = ({
 	music = [],
 	slug,
 }: ProjectCardProps) => {
-	const [currentItem, setCurrentItem] = useState<(string | number)[]>(
-		photos[0]
-			? [
-					"image",
-					urlFor(
-						photos[0].portrait!,
-						photos[0].dimensions!.width,
-						photos[0].dimensions!.height,
-					)!.url(),
-					photos[0].dimensions!.width,
-					photos[0].dimensions!.height,
-				]
-			: videos[0]
-				? ["video", videos[0].link, 0, 0]
-				: ["song", cleanSpotifyEmbed(music[0].spotifyEmbedLink), 0, 0],
-	);
-
-	const handleSetItem = (
-		type: string,
-		link?: string,
-		portrait?: SanityImageSource,
-		width?: number,
-		height?: number,
-	) => {
-		if (type === "song" && !!link) {
-			cleanSpotifyEmbed(link);
-			setCurrentItem([type, link, 0, 0]);
-		}
-
-		if (type === "video" && !!link) {
-			setCurrentItem([type, link, 0, 0]);
-		}
-
-		if (type === "image" && !!portrait && !!width && !!height) {
-			const url = urlFor(portrait, width, height)!.url();
-			setCurrentItem([type, url, width, height]);
-		}
-	};
-
-	const [type, link, width, height] = currentItem;
-
-	const multipleItems = [...music, ...videos, ...photos].length > 1;
-
-	let isMobile: boolean = false;
-
-	if (typeof window !== "undefined") {
-		isMobile = window.matchMedia("(width >= 48rem)").matches;
-	}
-
 	return (
-		<>
-			{isMobile ? (
-				<section
-					className="flex-col-reverse h-full max-h-[calc(100%-3rem)] items-center justify-between gap-2 rounded-xl md:flex md:max-h-full md:basis-7/8 md:flex-row md:items-start md:gap-4"
-					id={slug.current}
-				>
-					{multipleItems && (
-						<ItemList
-							photos={photos}
-							videos={videos}
-							music={music}
-							handleSetItem={handleSetItem}
+		<section
+			className="flex h-full w-full min-h-0 min-w-0 max-h-full max-w-full rounded-lg gap-2 overflow-hidden"
+			id={slug.current}
+		>
+			<div className="min-h-0 min-w-0 no-scrollbar flex flex-col gap-2 h-full w-full overflow-scroll md:flex-row">
+				{videos.length >= 1 &&
+					videos.map(({ link, thumbnail }, i) => (
+						<Iframe
+							src={link}
+							type={"video"}
+							key={link + i}
+							thumbnail={thumbnail}
 						/>
-					)}
-					<ViewTransition name={"cover-photo"}>
-						<div
-							className={`h-full w-full min-h-0 flex ${multipleItems ? "basis-11/12" : "basis-12/12"} rounded-lg justify-center items-center`}
-						>
-							{typeof link == "string" &&
-								type &&
-								typeof width == "number" &&
-								typeof height == "number" &&
-								type === "image" && (
-									<Image
-										alt={"Heashot of Morgan Tomasetti"}
-										src={link}
-										width={width!}
-										height={height}
-										loading="eager"
-										className="m-auto h-full w-auto rounded-lg object-cover"
-									/>
-								)}
-							{typeof link == "string" && type === "video" && (
-								<iframe
-									src={link}
-									className="aspect-video m-auto h-full w-full rounded-lg bg-black object-cover"
-									allowFullScreen
-									allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								></iframe>
-							)}
-							{typeof link == "string" && type === "song" && (
-								<iframe
-									data-testid="embed-iframe"
-									className="rounded-lg max-w-4xl"
-									src={link}
-									width="100%"
-									height="352"
-									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-									loading="lazy"
-								></iframe>
-							)}
-						</div>
-					</ViewTransition>
-				</section>
-			) : (
-				<>
-					{multipleItems ? (
-						<section
-							className="no-scrollbar min-h-0 min-w-0 h-full w-full max-h-full overflow-y-scroll rounded-lg gap-2 overflow-scroll"
-							id={slug.current}
-						>
-							<ImageGallery
-								photos={photos}
-								videos={videos}
-								music={music}
-								frameWidth={"100%"}
-								gap={"1rem"}
-								slug={slug.current}
-							/>
-						</section>
-					) : (
-						<section
-							className="flex h-full max-h-full items-center justify-between gap-2 rounded-xl"
-							id={slug.current}
-						>
-							{videos.length === 1 &&
-								videos.map(({ link }, i) => (
-									<iframe
-										src={link}
-										className={`aspect-video m-auto h-auto w-full rounded-lg bg-black object-cover`}
-										allowFullScreen
-										allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-										key={link + i}
-									></iframe>
-								))}
-							{music.length === 1 &&
-								music.map(({ spotifyEmbedLink }, i) => (
-									<iframe
-										data-testid="embed-iframe"
-										className="rounded-lg max-w-4xl"
-										src={cleanSpotifyEmbed(spotifyEmbedLink)}
-										width="100%"
-										height="352"
-										allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-										loading="lazy"
-										key={spotifyEmbedLink + i}
-									></iframe>
-								))}
-							{photos.length === 1 &&
-								photos.map(
-									(
-										{ description, portrait, dimensions: { width, height } },
-										i,
-									) => {
-										const photoUrl = portrait
-											? urlFor(portrait, width, height)!
-													.fit("max")
-													.quality(100)
-													.url()
-											: "";
+					))}
+				{music.length >= 1 &&
+					music.map(({ spotifyEmbedLink }, i) => (
+						<Iframe
+							src={cleanSpotifyEmbed(spotifyEmbedLink)}
+							type={"song"}
+							key={spotifyEmbedLink + i}
+						/>
+					))}
+				{photos.length >= 1 &&
+					photos.map(
+						({ description, portrait, dimensions: { width, height } }, i) => {
+							const photoUrl = portrait
+								? urlFor(portrait, width, height)!.fit("max").quality(100).url()
+								: "";
 
-										return (
-											<Image
-												alt={description}
-												src={photoUrl}
-												width={width}
-												height={height}
-												loading="eager"
-												className="m-auto h-full w-auto rounded-lg object-cover"
-												key={photoUrl + i}
-											/>
-										);
-									},
-								)}
-						</section>
+							return (
+								<Image
+									alt={description}
+									src={photoUrl}
+									width={width}
+									height={height}
+									loading="eager"
+									className="m-auto h-full w-full rounded-lg"
+									key={photoUrl + i}
+								/>
+							);
+						},
 					)}
-				</>
-			)}
-		</>
+			</div>
+		</section>
 	);
 };

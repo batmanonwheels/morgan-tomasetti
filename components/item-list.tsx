@@ -9,13 +9,7 @@ type ItemListProps = {
 	photos: Photo[];
 	videos: Video[];
 	music: Song[];
-	handleSetItem: (
-		type: string,
-		link?: string,
-		portrait?: SanityImageSource,
-		width?: number,
-		height?: number,
-	) => void;
+	handleSetItem: (type: string, id: string) => void;
 };
 
 export const ItemList = ({
@@ -27,9 +21,10 @@ export const ItemList = ({
 	return (
 		<ul className="hidden no-scrollbar min-h-1/12 max-h-1/12 w-full basis-1/12 flex-row justify-center gap-2 overflow-x-scroll rounded-lg md:flex md:overflow-x-hidden md:overflow-y-scroll md:min-h-full md:max-h-full md:basis-1/8 md:flex-col md:items-start md:justify-start md:gap-4">
 			{music &&
-				music.map(({ spotifyEmbedLink, name }, i) => {
+				music.map(({ _id, spotifyEmbedLink, name }, i) => {
 					return (
 						<SongCard
+							id={_id}
 							src={spotifyEmbedLink}
 							name={name}
 							handleSetItem={handleSetItem}
@@ -38,9 +33,10 @@ export const ItemList = ({
 					);
 				})}
 			{videos &&
-				videos.map(({ description, link }, i) => {
+				videos.map(({ _id, description, link }, i) => {
 					return (
 						<VideoCard
+							id={_id}
 							desc={description}
 							src={link}
 							handleSetItem={handleSetItem}
@@ -64,6 +60,7 @@ export const ItemList = ({
 
 						return (
 							<ImageCard
+								id={_id}
 								portrait={portrait}
 								src={photoUrl}
 								desc={description}
