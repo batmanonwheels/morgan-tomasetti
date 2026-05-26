@@ -58,14 +58,12 @@ export const getRandomFieldVideoThumbnail = async (
 		FIELD_VIDEOS_THUMBNAIL_QUERY(field),
 	);
 
-	const {
-		link,
-		thumbnail,
-		dimensions: { width, height },
-	} = videos[Math.floor(Math.random() * videos.length)];
+	const { link, thumbnail, dimensions } =
+		videos[Math.floor(Math.random() * videos.length)];
 	let cover: string | ImageUrlBuilder | undefined;
 
-	if (thumbnail && width && height) {
+	if (thumbnail) {
+		const { width, height } = dimensions;
 		cover = urlFor(thumbnail, width, height)!;
 	} else {
 		cover = generateThumbnail(link);
