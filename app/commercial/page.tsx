@@ -9,7 +9,7 @@ export default async function Commercial() {
 		<ViewTransition name={"cover-photo"}>
 			<Image
 				alt={"Morgan Tomasetti video thumbnail"}
-				src={cover!.toString()}
+				src={cover!}
 				width={1920}
 				height={1080}
 				className="m-auto min-w-0 min-h-0 max-h-full grow rounded-lg object-cover"
