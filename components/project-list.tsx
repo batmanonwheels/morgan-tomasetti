@@ -31,7 +31,7 @@ export const ProjectList = ({
 			<Link href={baseUrl} className="hidden lg:block">
 				<h2 className="w-full font-medium font-zenitha text-2xl">{name}</h2>
 			</Link>
-			<ul className="no-scrollbar flex h-full max-w-full grow snap-x snap-mandatory flex-row gap-0 overflow-x-scroll px-36 italic text-sm lg:snap-none lg:flex-col lg:gap-2 lg:overflow-hidden lg:px-0 lg:pl-2">
+			<ul className="no-scrollbar flex h-full max-w-full grow snap-x snap-mandatory flex-row gap-0 overflow-x-scroll px-36 italic text-xs lg:text-sm lg:snap-none lg:flex-col lg:gap-2 lg:overflow-hidden lg:px-0 lg:pl-2">
 				{projects.map(({ name, slug, photos, videos, music }, i: number) => {
 					const isCurrent: boolean =
 						pathname.split(baseUrl)[1] === slug.current;
