@@ -52,7 +52,7 @@ export const getRandomFieldPhoto = async (
 export const getRandomFieldVideoThumbnail = async (
 	field: string,
 ): Promise<{
-	cover: ImageUrlBuilder | string | undefined;
+	cover: string | undefined;
 }> => {
 	const videos = await client.fetch<Video[]>(
 		FIELD_VIDEOS_THUMBNAIL_QUERY(field),
