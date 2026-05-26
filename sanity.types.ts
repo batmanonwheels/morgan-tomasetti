@@ -54,6 +54,11 @@ export type Video = {
 	};
 	link: string;
 	isVisible: boolean;
+	dimensions: {
+		width: number;
+		height: number;
+		aspectRatio: string;
+	};
 };
 
 export type Song = {
