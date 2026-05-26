@@ -10,6 +10,7 @@ type IframeProps = {
 	src: string;
 	type: "video" | "song";
 	thumbnail?: string | SanityImageSource | undefined;
+	inGallery?: boolean;
 };
 
 export default function Iframe({ src, thumbnail, type }: IframeProps) {

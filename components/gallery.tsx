@@ -15,8 +15,8 @@ type GalleryProps = {
 	music?: Song[];
 	gap: string;
 	frameWidth: string;
-	height: number;
-	width: number;
+	height?: number;
+	width?: number;
 	className?: string;
 };
 
@@ -57,7 +57,7 @@ export default function Gallery({
 										<Iframe
 											src={link}
 											type="video"
-											// inGallery={true}
+											inGallery={true}
 											thumbnail={thumbnail}
 										/>
 									</ViewTransition>
@@ -71,7 +71,7 @@ export default function Gallery({
 										<Iframe
 											src={link}
 											type="video"
-											// inGallery={true}
+											inGallery={true}
 											thumbnail={thumbnail}
 										/>
 									</ViewTransition>
@@ -83,7 +83,7 @@ export default function Gallery({
 								<Iframe
 									src={link}
 									type="video"
-									// inGallery={true}
+									inGallery={true}
 									thumbnail={thumbnail}
 								/>
 							</Frame>
