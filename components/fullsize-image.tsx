@@ -20,7 +20,7 @@ export const FullsizeImage = ({
 	return (
 		<dialog
 			id="fullsize"
-			className={`relative m-auto bg-black backdrop:bg-jinza-safflower-5 backdrop:opacity-90 rounded-xl`}
+			className={`relative m-auto bg-black backdrop:bg-jinza-safflower-5 backdrop:opacity-90 rounded-xl focus-within:outline-none focus:outline-none focus-visible:outline-none`}
 			open={false}
 			closedby="closerequest"
 			onClick={() => closeFullsize()}
@@ -31,7 +31,7 @@ export const FullsizeImage = ({
 					src={img}
 					width={1920}
 					height={1080}
-					className="h-full w-full md:max-h-[calc(100dvh-2.5rem)] rounded-xl bg-black object-cover"
+					className="h-full w-full md:max-h-[calc(100dvh-2.5rem)] rounded-xl bg-black object-cover focus-within:outline-none focus:outline-none focus-visible:outline-none"
 				/>
 			)}
 		</dialog>
