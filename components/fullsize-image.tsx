@@ -31,7 +31,7 @@ export const FullsizeImage = ({
 					src={img}
 					width={1920}
 					height={1080}
-					className="h-full w-full md:max-h-[calc(100dvh-2.5rem)] rounded-xl bg-black object-cover focus-within:outline-none focus:outline-none focus-visible:outline-none"
+					className="h-full w-full md:max-h-[calc(100dvh-2.5rem)] rounded-xl bg-black focus-within:outline-none focus:outline-none focus-visible:outline-none"
 				/>
 			)}
 		</dialog>
