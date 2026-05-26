@@ -1,12 +1,13 @@
-import { client } from "@/sanity/lib/client";
-import { Photo, Video } from "@/sanity.types";
-import { generateThumbnail } from "./generateThumbnail";
+import { client } from '@/sanity/lib/client';
+import { Photo, Video } from '@/sanity.types';
+import { generateThumbnail } from './generateThumbnail';
 import {
 	COVER_PHOTOS_QUERY,
 	FIELD_PHOTOS_QUERY,
 	FIELD_VIDEOS_THUMBNAIL_QUERY,
-} from "./queries";
-import { urlFor } from "./urlForImage";
+} from './queries';
+import { urlFor } from './urlForImage';
+import { ImageUrlBuilder } from 'sanity';
 
 export const getRandomCoverPhoto = async (): Promise<{
 	width: number;
@@ -23,7 +24,7 @@ export const getRandomCoverPhoto = async (): Promise<{
 	return {
 		width,
 		height,
-		cover: urlFor(portrait, width, height)!.fit("max").quality(100).url(),
+		cover: urlFor(portrait, width, height)!.fit('max').quality(100).url(),
 	};
 };
 
@@ -44,22 +45,31 @@ export const getRandomFieldPhoto = async (
 	return {
 		width,
 		height,
-		cover: urlFor(portrait, width, height)!.fit("max").quality(100).url(),
+		cover: urlFor(portrait, width, height)!.fit('max').quality(100).url(),
 	};
 };
 
 export const getRandomFieldVideoThumbnail = async (
 	field: string,
 ): Promise<{
-	cover: string | undefined;
+	cover: ImageUrlBuilder | string | undefined;
 }> => {
 	const videos = await client.fetch<Video[]>(
 		FIELD_VIDEOS_THUMBNAIL_QUERY(field),
 	);
 
-	const { link } = videos[Math.floor(Math.random() * videos.length)];
+	const {
+		link,
+		thumbnail,
+		dimensions: { width, height },
+	} = videos[Math.floor(Math.random() * videos.length)];
+	let cover: string | ImageUrlBuilder | undefined;
 
-	const cover = generateThumbnail(link);
+	if (thumbnail && width && height) {
+		cover = urlFor(thumbnail, width, height)!;
+	} else {
+		cover = generateThumbnail(link);
+	}
 
 	return {
 		cover,
