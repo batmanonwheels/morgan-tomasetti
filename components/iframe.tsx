@@ -38,7 +38,7 @@ export default function Iframe({ src, thumbnail, type }: IframeProps) {
 			<>
 				{!isActive ? (
 					<div
-						className="relative aspect-video m-auto h-auto w-full rounded-lg lg:h-full"
+						className="relative aspect-video m-auto h-auto w-full rounded-lg lg:h-full lg:max-w-11/12"
 						onClick={() => setIsActive(true)}
 					>
 						<Image
