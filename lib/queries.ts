@@ -98,6 +98,16 @@ export const PROJECT_QUERY = (project: string) =>
       },
    }`;
 
+export const PHOTO_QUERY = (id: string) =>
+	`*[_type=="photo" && _id=="${id}"][0]{
+   ...,
+    "dimensions": portrait.asset->metadata.dimensions {
+         width,
+         height,
+         aspectRatio
+       }
+}`;
+
 export const PHOTOS_QUERY = () => `*[_type=="photo"]{
    ...,
     "dimensions": portrait.asset->metadata.dimensions {
