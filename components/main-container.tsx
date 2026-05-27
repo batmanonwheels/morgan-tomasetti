@@ -13,7 +13,7 @@ export const MainContainer = ({
 	return (
 		<main
 			className={cn(
-				` flex min-w-0 min-h-0 max-h-6/7 basis-6/7 flex-col gap-4 p-2 lg:max-h-7/8 lg:basis-7/8 lg:flex-row lg:p-4`,
+				`flex min-w-0 min-h-0 max-h-6/7 basis-6/7 flex-col gap-4 p-2 lg:max-h-7/8 lg:basis-7/8 lg:flex-row lg:p-4`,
 				scroll,
 				className,
 			)}
