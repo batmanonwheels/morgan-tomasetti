@@ -3,6 +3,7 @@ export const FIELD_PHOTOS_QUERY = (
 ) => `*[_type == "field" && name == "${field}"]{
   "projects": *[_type == "project" && references(^._id)]{
     "photos": *[_type == "photo" && references(^._id)][isVisible]{
+      _id,
       description,
       portrait,
       "dimensions": portrait.asset->metadata.dimensions {
@@ -17,22 +18,33 @@ export const FIELD_PHOTOS_QUERY = (
 export const FIELD_VIDEOS_QUERY = (
 	field: string,
 ) => `*[_type == "field" && name == "${field}"]{
-  "projects": *[_type == "project" && references(^._id)]{
-    "videos": *[_type == "video" && references(^._id)][isVisible]{
-         link, description
-      },
-  },
-}.projects[].videos[]`;
+         "projects": *[_type == "project" && references(^._id)]{
+            "videos": *[_type == "video" && references(^._id)][isVisible]{
+                  _id,
+                  link,
+                  description,
+                  thumbnail,
+               },
+         },
+      }.projects[].videos[]`;
 
 export const FIELD_VIDEOS_THUMBNAIL_QUERY = (
 	field: string,
 ) => `*[_type == "field" && name == "${field}"]{
-  "projects": *[_type == "project" && references(^._id)]{
-    "videos": *[_type == "video" && references(^._id) && link match "*youtube*"][isVisible]{
-         link, description
-      },
-  },
-}.projects[].videos[]`;
+         "projects": *[_type == "project" && references(^._id)]{
+                  "videos": *[_type == "video" && references(^._id) && link match "*youtube*"][isVisible]{
+                     _id,
+                     link,
+                     description,
+                     thumbnail,
+                     "dimensions": thumbnail.asset->metadata.dimensions {
+                        width,
+                        height,
+                        aspectRatio
+                     },
+                  },
+            },
+      }.projects[].videos[]`;
 
 // FIELD_VIDEOS_THUMBNAIL_QUERY - Need higher resolution thumbnails for non-youtube videos + more image variety
 
@@ -49,20 +61,20 @@ export const FIELD_VIDEOS_THUMBNAIL_QUERY = (
 export const PROJECT_LIST_QUERY = (
 	field: string,
 ) => `*[_type=="field" && name=="${field}"][0]{
-name,
-  "projects": *[_type=='project' && references(^._id)]{
-      name,
-      slug,
-		"photos": *[_type=='photo' && references(^._id)][isVisible]{
-      description,
-      },
-      "videos": *[_type == "video" && references(^._id)][isVisible]{
-      description,
-      },
-      "music":  *[_type == "song" && references(^._id)][isVisible]{
          name,
-      },
-	   },
+         "projects": *[_type=='project' && references(^._id)]{
+                  name,
+                  slug,
+                  "photos": *[_type=='photo' && references(^._id)][isVisible]{
+                     description,
+                  },
+                  "videos": *[_type == "video" && references(^._id)][isVisible]{
+                     description,
+                  },
+                  "music":  *[_type == "song" && references(^._id)][isVisible]{
+                     name,
+                  },
+         },
       }`;
 
 export const PROJECT_QUERY = (project: string) =>
@@ -79,12 +91,22 @@ export const PROJECT_QUERY = (project: string) =>
          },
       },
       "videos": *[_type == "video" && references(^._id)][isVisible]{
-         link, description
+         link, description, thumbnail,
       },
       "music": *[_type == "song" && references(^._id)][isVisible]{
          spotifyEmbedLink, name
       },
    }`;
+
+export const PHOTO_QUERY = (id: string) =>
+	`*[_type=="photo" && _id=="${id}"][0]{
+   ...,
+    "dimensions": portrait.asset->metadata.dimensions {
+         width,
+         height,
+         aspectRatio
+       }
+}`;
 
 export const PHOTOS_QUERY = () => `*[_type=="photo"]{
    ...,
@@ -103,3 +125,6 @@ export const COVER_PHOTOS_QUERY = () => `*[_type=="photo"][isCoverWorthy]{
          aspectRatio
        }
 }`;
+
+export const ITEM_QUERY = (id: string) =>
+	`*[_type in ["photo", "video", "song"] && _id=="${id}"][0]`;

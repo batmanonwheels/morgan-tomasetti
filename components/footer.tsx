@@ -16,6 +16,7 @@ export const Footer = () => {
 		["TV/FILM", "/screen", "bg-jinza-safflower-5"],
 		["MUSIC", "/music", "bg-jinza-safflower-4"],
 		// ['DIGIS', '/digis', 'bg-jinza-safflower-3'],
+		["REELS", "/reels", "bg-jinza-safflower-3"],
 		["HEADSHOTS", "/headshots", "bg-jinza-safflower-2"],
 		["GALLERY", "/gallery", "bg-jinza-safflower-1"],
 		["CONTACT", "/contact", "bg-jinza-safflower-1"],
@@ -61,7 +62,7 @@ export const Footer = () => {
 						Morgan Tomasetti
 					</h1>
 				</Link>
-				<ul className="no-scrollbar flex h-10 max-w-full snap-x snap-mandatory items-center gap-4 overflow-x-scroll px-40 italic font-light  lg:snap-none lg:gap-4 lg:overflow-x-auto lg:px-0 lg:text-[clamp(.25rem,2vw,1rem)]">
+				<ul className="no-scrollbar flex h-10 max-w-full text-sm snap-x snap-mandatory items-center gap-4 overflow-x-scroll px-40 italic font-light  lg:snap-none lg:gap-4 lg:overflow-x-auto lg:px-0 lg:text-[clamp(.25rem,2vw,1rem)]">
 					{directory.map(([title, link], i) => {
 						const isCurrent: boolean = "/" + pathname.split("/")[1] === link;
 

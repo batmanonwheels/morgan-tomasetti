@@ -45,6 +45,7 @@ export type Video = {
 	_updatedAt: string;
 	_rev: string;
 	description: string;
+	thumbnail?: SanityImageSource;
 	category?: {
 		_ref: string;
 		_type: 'reference';
@@ -53,6 +54,11 @@ export type Video = {
 	};
 	link: string;
 	isVisible: boolean;
+	dimensions: {
+		width: number;
+		height: number;
+		aspectRatio: string;
+	};
 };
 
 export type Song = {
