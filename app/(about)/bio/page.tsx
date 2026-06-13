@@ -48,7 +48,7 @@ export default async function Bio() {
 					<h1 className="w-full font-zenitha md:w-7/8 text-6xl md:text-8xl">
 						About Morgan
 					</h1>
-					<h3 className="text-sm font-semibold md:w-3/4 md:text-xl">
+					<h3 className="text-sm font-thin md:w-3/4 md:text-xl">
 						{subtitle.toUpperCase()}
 					</h3>
 				</div>
