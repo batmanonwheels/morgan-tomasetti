@@ -11,12 +11,13 @@ export const Footer = () => {
 	//Array of all nav links and their respective colors
 	const directory: string[][] = [
 		["BIO", "/bio", "bg-jinza-safflower-8"],
+		["REELS", "/reels", "bg-jinza-safflower-3"],
 		["COMMERCIAL", "/commercial", "bg-jinza-safflower-7"],
 		["THEATRE", "/theatre", "bg-jinza-safflower-6"],
 		["TV/FILM", "/screen", "bg-jinza-safflower-5"],
 		["MUSIC", "/music", "bg-jinza-safflower-4"],
 		// ['DIGIS', '/digis', 'bg-jinza-safflower-3'],
-		["REELS", "/reels", "bg-jinza-safflower-3"],
+
 		["HEADSHOTS", "/headshots", "bg-jinza-safflower-2"],
 		["GALLERY", "/gallery", "bg-jinza-safflower-1"],
 		["CONTACT", "/contact", "bg-jinza-safflower-1"],
