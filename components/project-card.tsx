@@ -59,7 +59,7 @@ export const ProjectCard = ({
 									width={width}
 									height={height}
 									loading="eager"
-									className="m-auto h-full w-full rounded-lg"
+									className="m-auto h-full w-auto rounded-lg"
 									key={photoUrl + i}
 								/>
 							);

@@ -3,6 +3,8 @@ import { ViewTransition } from "react";
 import { MainContainer } from "@/components/main-container";
 import { getRandomCoverPhoto } from "@/lib/getRandom";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
 	const { width, height, cover } = await getRandomCoverPhoto();
 
