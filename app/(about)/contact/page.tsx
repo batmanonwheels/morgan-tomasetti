@@ -34,7 +34,9 @@ export default async function Contact() {
 				</div>
 
 				<div className="flex w-full flex-col gap-2">
-					<h3 className="font-bold font-mono text-sm md:text-base">SOCIALS</h3>
+					<h3 className="font-bold font-zenitha text-sm md:text-base">
+						Socials
+					</h3>
 					<div className="flex h-6 w-4/5 justify-between gap-1">
 						<a
 							className="text-lg"
@@ -120,8 +122,8 @@ export default async function Contact() {
 				</div>
 
 				<div className="flex w-full flex-col gap-2">
-					<h3 className="font-bold font-mono text-sm md:text-base">
-						REPRESENTATION
+					<h3 className="font-bold font-zenitha text-sm md:text-base">
+						Representation
 					</h3>
 					<div className="flex w-full flex-col justify-between gap-1 text-sm md:text-base">
 						{representation.map((rep, i) => (

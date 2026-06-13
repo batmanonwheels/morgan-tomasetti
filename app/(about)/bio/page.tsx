@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 	},
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function Bio() {
 	const { width, height, cover } = await getRandomFieldPhoto("Headshots");
 
@@ -43,10 +45,10 @@ export default async function Bio() {
 			</ViewTransition>
 			<section className="flex h-fit flex-col gap-4 p-4 md:justify-center">
 				<div className="flex flex-col gap-2">
-					<h1 className="w-full font-zenitha text-6xl md:text-8xl">
+					<h1 className="w-full font-zenitha md:w-7/8 text-6xl md:text-8xl">
 						About Morgan
 					</h1>
-					<h3 className="font-caprasimo text-sm md:w-3/4 md:text-xl">
+					<h3 className="text-sm font-semibold md:w-3/4 md:text-xl">
 						{subtitle.toUpperCase()}
 					</h3>
 				</div>
